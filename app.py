@@ -255,8 +255,8 @@ if mode == "Yanlışlarım":
 
     eligible_ids = []
     for w in wrong_questions:
-        wrong_date = datetime.strptime(w["date"], "%Y-%m-%d")
-        if now_dt - wrong_date >= timedelta(days=2):
+        wrong_date = datetime.strptime(w["date"], "%Y-%m-%d").date()
+        if (now_dt.date() - wrong_date).days >= 2:
             eligible_ids.append(w["id"])
 
     eligible_questions = [q for q in questions if q["id"] in eligible_ids]
