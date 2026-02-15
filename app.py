@@ -175,8 +175,8 @@ html, body {{
 }}
 
 @keyframes confettiUp {{
-  0% { transform: translateY(110vh) rotate(0deg); }
-  100% { transform: translateY(-10vh) rotate(720deg); }
+  0% {{ transform: translateY(110vh) rotate(0deg); }}
+  100% {{ transform: translateY(-10vh) rotate(720deg); }}
 }}
 
 .balloon {{
@@ -198,8 +198,8 @@ html, body {{
 }}
 
 @keyframes balloonDown {{
-  0% { transform: translateY(-20vh); }
-  100% { transform: translateY(110vh); }
+  0% {{ transform: translateY(-20vh); }}
+  100% {{ transform: translateY(110vh); }}
 }}
 </style>
 </head>
