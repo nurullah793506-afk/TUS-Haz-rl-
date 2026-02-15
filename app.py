@@ -201,6 +201,41 @@ html, body {{
   0% {{ transform: translateY(-20vh); }}
   100% {{ transform: translateY(110vh); }}
 }}
+
+.heart {{
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background: #ff4d88;
+  transform: rotate(-45deg);
+  animation: heartFall linear infinite;
+}}
+
+.heart:before,
+.heart:after {{
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background: #ff4d88;
+  border-radius: 50%;
+}}
+
+.heart:before {{
+  top: -9px;
+  left: 0;
+}}
+
+.heart:after {{
+  left: 9px;
+  top: 0;
+}}
+
+@keyframes heartFall {{
+  0% {{ transform: translateY(-20vh) rotate(-45deg); }}
+  100% {{ transform: translateY(110vh) rotate(-45deg); }}
+}}
+
 </style>
 </head>
 <body>
@@ -240,6 +275,16 @@ for (let i = 0; i < 12; i++) {{
   balloon.style.background = "hsl(" + (Math.random()*360) + ", 70%, 60%)";
   balloon.style.animationDuration = (6+Math.random()*4)+"s";
   root.appendChild(balloon);
+}}
+
+// HEARTS
+for (let i = 0; i < 25; i++) {{
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.style.left = Math.random()*100 + "vw";
+  heart.style.animationDuration = (4+Math.random()*4) + "s";
+  heart.style.animationDelay = (Math.random()*3) + "s";
+  root.appendChild(heart);
 }}
 </script>
 </body>
