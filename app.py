@@ -247,7 +247,7 @@ html, body {{
 <script>
 const root = document.getElementById("celebration");
 
-for (let i = 0; i < 12; i++) {
+for (let i = 0; i < 12; i++) {{
 
   const bird = document.createElement("div");
   bird.className = "bird";
@@ -264,10 +264,9 @@ for (let i = 0; i < 12; i++) {
     <polygon points="54,20 60,23 54,26" fill="orange"/>
     <circle cx="50" cy="18" r="2" fill="black"/>
   </svg>
-  `;
-
+  ;
   root.appendChild(bird);
-}
+}}
 
 
 // CONFETTI
