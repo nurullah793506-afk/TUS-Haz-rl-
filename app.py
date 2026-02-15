@@ -142,9 +142,12 @@ if mode == "Günlük Test":
                 text-shadow: 2px 2px 10px black;
             }}
 
+
             .bird {{
                 position: absolute;
-                width: 80px;
+                width: 120px;
+                height: auto;
+                z-index: 9999;
             }}
 
             @keyframes flyRight {{
