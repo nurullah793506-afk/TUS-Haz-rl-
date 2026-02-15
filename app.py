@@ -166,6 +166,41 @@ html, body {{
   0% {{ transform: translateX(115vw) scaleX(-1); }}
   100% {{ transform: translateX(-15vw) scaleX(-1); }}
 }}
+.confetti {{
+  position: absolute;
+  width: 8px;
+  height: 16px;
+  opacity: 0.8;
+  animation: confettiUp linear infinite;
+}}
+
+@keyframes confettiUp {{
+  0% { transform: translateY(110vh) rotate(0deg); }
+  100% { transform: translateY(-10vh) rotate(720deg); }
+}}
+
+.balloon {{
+  position: absolute;
+  width: 40px;
+  height: 55px;
+  border-radius: 50%;
+  animation: balloonDown linear infinite;
+}}
+
+.balloon::after {{
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 30px;
+  background: white;
+  left: 50%;
+  top: 55px;
+}}
+
+@keyframes balloonDown {{
+  0% { transform: translateY(-20vh); }
+  100% { transform: translateY(110vh); }
+}}
 </style>
 </head>
 <body>
@@ -185,6 +220,26 @@ for (let i = 0; i < 12; i++) {{
   bird.style.animation = (Math.random()<0.5 ? 
       "flyRight " : "flyLeft ") + (3+Math.random()*3)+"s linear infinite";
   root.appendChild(bird);
+}}
+
+// CONFETTI
+for (let i = 0; i < 40; i++) {{
+  const confetti = document.createElement("div");
+  confetti.className = "confetti";
+  confetti.style.left = Math.random()*100 + "vw";
+  confetti.style.background = `hsl(${Math.random()*360}, 100%, 60%)`;
+  confetti.style.animationDuration = (3+Math.random()*3)+"s";
+  root.appendChild(confetti);
+}}
+
+// BALLOONS
+for (let i = 0; i < 12; i++) {{
+  const balloon = document.createElement("div");
+  balloon.className = "balloon";
+  balloon.style.left = Math.random()*100 + "vw";
+  balloon.style.background = `hsl(${Math.random()*360}, 70%, 60%)`;
+  balloon.style.animationDuration = (6+Math.random()*4)+"s";
+  root.appendChild(balloon);
 }}
 </script>
 </body>
