@@ -120,9 +120,9 @@ if mode == "Günlük Test":
 
             <style>
             body {{ margin:0; overflow:hidden; }}
-            html, body {
+            html, body {{
             height: 100%;
-            }
+            }}
 
             .celebration {{
                 position: absolute;
