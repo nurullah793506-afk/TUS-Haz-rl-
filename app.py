@@ -108,7 +108,8 @@ if mode == "Günlük Test":
                 <div class="title">👑 HARİKASIN 👑</div>
             </div>
 
-            <audio id="budgieSound" src="budgie.mp3"></audio>
+            <audio id="budgieSound" src="/static/budgie.mp3"></audio>
+
 
             <style>
             body { margin:0; overflow:hidden; }
@@ -169,7 +170,8 @@ if mode == "Günlük Test":
             for (let i = 0; i < 12; i++) {
 
                 let bird = document.createElement('img');
-                bird.src = 'budgie.png';
+                bird.src = '/static/budgie.png';
+
                 bird.className = 'bird';
 
                 let hue = colors[Math.floor(Math.random() * colors.length)];
