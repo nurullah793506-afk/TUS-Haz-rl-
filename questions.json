@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "soru": "6 yaş çocukta ateş, bilateral konjonktivit, çilek dili ve el-ayaklarda soyulma mevcut. En olası tanı nedir?",
+    "secenekler": ["Kızamık", "Kawasaki hastalığı", "Skarlatin", "Toksik şok sendromu"],
+    "dogru": "Kawasaki hastalığı"
+  },
+  {
+    "id": 2,
+    "soru": "2 aylık bebekte fışkırır tarzda safrasız kusma ve zeytin tanesi şeklinde kitle palpe ediliyor. En olası tanı nedir?",
+    "secenekler": ["Duodenal atrezi", "Pilor stenozu", "Gastroenterit", "İnvajinasyon"],
+    "dogru": "Pilor stenozu"
+  },
+  {
+    "id": 3,
+    "soru": "9 aylık bebekte çilek jölesi görünümünde dışkı ve aralıklı şiddetli ağlama mevcut. En olası tanı nedir?",
+    "secenekler": ["Hirschsprung", "İnvajinasyon", "Apandisit", "Gastroenterit"],
+    "dogru": "İnvajinasyon"
+  },
+  {
+    "id": 4,
+    "soru": "3 yaş çocukta masif proteinüri, hipoalbuminemi ve ödem mevcut. En olası tanı nedir?",
+    "secenekler": ["Minimal değişiklik hastalığı", "IgA nefropatisi", "HUS", "APSGN"],
+    "dogru": "Minimal değişiklik hastalığı"
+  },
+  {
+    "id": 5,
+    "soru": "2 yaş çocukta kanlı ishal sonrası anemi, trombositopeni ve böbrek yetmezliği gelişiyor. En olası tanı nedir?",
+    "secenekler": ["ITP", "HUS", "TTP", "DIC"],
+    "dogru": "HUS"
+  } ,
+  {
+    "id": 6,
+    "soru": "Yenidoğanda safralı kusma ve 'çift balon' görüntüsü mevcut. En olası tanı nedir?",
+    "secenekler": ["Pilor stenozu", "Duodenal atrezi", "Hirschsprung", "İnvajinasyon"],
+    "dogru": "Duodenal atrezi"
+  },
+  {
+    "id": 7,
+    "soru": "7 yaş çocukta palpabl purpura, karın ağrısı ve hematüri mevcut. En olası tanı nedir?",
+    "secenekler": ["ITP", "Henoch-Schönlein purpurası", "SLE", "Akut romatizmal ateş"],
+    "dogru": "Henoch-Schönlein purpurası"
+  },
+  {
+    "id": 8,
+    "soru": "Yenidoğanda makroglossi, omfalosel ve hipoglisemi mevcut. En olası sendrom nedir?",
+    "secenekler": ["Down sendromu", "Turner sendromu", "Beckwith-Wiedemann sendromu", "Noonan sendromu"],
+    "dogru": "Beckwith-Wiedemann sendromu"
+  },
+  {
+    "id": 9,
+    "soru": "Tekrarlayan pnömoni ve yağlı dışkılama olan çocukta ter testi pozitif. En olası tanı nedir?",
+    "secenekler": ["Astım", "Kistik fibrozis", "Bronşektazi", "Primer siliyer diskinezi"],
+    "dogru": "Kistik fibrozis"
+  },
+  {
+    "id": 10,
+    "soru": "1 yaş bebekte nörodejenerasyon ve kiraz kırmızısı makula saptanıyor. En olası tanı nedir?",
+    "secenekler": ["Gaucher", "Tay-Sachs", "Niemann-Pick", "Fenilketonüri"],
+    "dogru": "Tay-Sachs"
+  },
+  {
+    "id": 11,
+    "soru": "12 yaş kız çocukta boy kısalığı ve 45,XO karyotip mevcut. En olası tanı nedir?",
+    "secenekler": ["Klinefelter", "Turner sendromu", "Noonan", "Prader-Willi"],
+    "dogru": "Turner sendromu"
+  },
+  {
+    "id": 12,
+    "soru": "4 yaş çocukta havlar tarzda öksürük ve inspiratuar stridor mevcut. En olası tanı nedir?",
+    "secenekler": ["Epiglottit", "Krup", "Astım", "Bronşiolit"],
+    "dogru": "Krup"
+  },
+  {
+    "id": 13,
+    "soru": "Yenidoğanda mekonyum çıkaramama ve rektal tuşe sonrası ani gaz çıkışı mevcut. En olası tanı nedir?",
+    "secenekler": ["Duodenal atrezi", "Hirschsprung", "İnvajinasyon", "Pilor stenozu"],
+    "dogru": "Hirschsprung"
+  },
+  {
+    "id": 14,
+    "soru": "Makrositik anemi ve nörolojik bulguları olan çocukta en olası eksiklik nedir?",
+    "secenekler": ["Demir", "B12 vitamini", "Folat", "Çinko"],
+    "dogru": "B12 vitamini"
+  },
+  {
+    "id": 15,
+    "soru": "Prematüre bebekte surfaktan eksikliğine bağlı solunum sıkıntısı gelişiyor. En olası tanı nedir?",
+    "secenekler": ["RDS", "Pnömoni", "Mekonyum aspirasyonu", "Bronşiolit"],
+    "dogru": "RDS"
+  }
+]
