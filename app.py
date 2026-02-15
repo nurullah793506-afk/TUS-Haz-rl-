@@ -134,7 +134,7 @@ if mode == "Günlük Test":
         if st.session_state.correct_count >= 4:
 
             # ===================== KUTLAMA EKRANI (PEMBE, KONFETİ, KALP, UÇAN KUŞLAR) =====================
-            components.html(f"""
+components.html(f"""
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -142,11 +142,10 @@ if mode == "Günlük Test":
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <style>
   :root {{
-    --pink-1: #ff9acb;
-    --pink-2: #ff6fb1;
-    --pink-3: #ffa3d1;
+    --pink-1: #ffa7d6;
+    --pink-2: #ff87c6;
+    --pink-3: #ff6fb1;
     --heart:  #ff4d88;
-    --gold:   #ffd54f;
   }}
 
   html, body {{
@@ -155,12 +154,14 @@ if mode == "Günlük Test":
     overflow: hidden;
   }}
 
+  /* === PEMBE ARKA PLAN (görseldeki stil) === */
   .celebration {{
     position: fixed;
     inset: 0;
-    background: radial-gradient(circle at 30% 20%, var(--pink-3), var(--pink-2) 45%, var(--pink-1) 100%);
-    /* hafif desen */
-    background-blend-mode: screen;
+    background:
+      radial-gradient(circle at 30% 20%, var(--pink-1), transparent 65%),
+      radial-gradient(circle at 70% 80%, var(--pink-2), transparent 55%),
+      linear-gradient(180deg, var(--pink-2) 0%, var(--pink-3) 100%);
   }}
 
   .title {{
@@ -169,74 +170,79 @@ if mode == "Günlük Test":
     width: 100%;
     text-align: center;
     font-size: 56px;
-    color: white;
+    color: #fff;
     font-weight: 800;
-    text-shadow: 0 2px 0 #c33f70, 0 4px 12px rgba(0,0,0,.3);
+    text-shadow: 0 2px 0 #c33f70, 0 6px 14px rgba(0,0,0,.25);
     letter-spacing: .5px;
+    z-index: 6;
   }}
 
-  /* Kuş */
+  /* === KUŞLAR === */
   .bird {{
     position: absolute;
     width: 120px;
     height: auto;
     z-index: 4;
-    will-change: transform;
-    filter: drop-shadow(0 6px 10px rgba(0,0,0,.25));
+    will-change: transform, filter;
+    /* Tüm kuşu renklendir: */
+    filter: hue-rotate(var(--hue,0deg)) saturate(1.35) brightness(1.05)
+            drop-shadow(0 6px 10px rgba(0,0,0,.25));
   }}
 
-  /* Sağa uçuş: dalgalı rota — genlik değişken */
+  /* Sağa doğru dalgalı uçuş */
   @keyframes flyRight {{
     0%   {{ transform: translateX(-15vw) translateY(calc(var(--startY))); }}
-    20%  {{ transform: translateX(10vw)  translateY(calc(var(--startY) + 0.6*var(--amp))); }}
-    40%  {{ transform: translateX(35vw)  translateY(calc(var(--startY) - 0.6*var(--amp))); }}
-    60%  {{ transform: translateX(60vw)  translateY(calc(var(--startY) + 0.6*var(--amp))); }}
-    80%  {{ transform: translateX(85vw)  translateY(calc(var(--startY) - 0.6*var(--amp))); }}
+    20%  {{ transform: translateX(10vw)  translateY(calc(var(--startY) + 0.7*var(--amp))); }}
+    40%  {{ transform: translateX(35vw)  translateY(calc(var(--startY) - 0.7*var(--amp))); }}
+    60%  {{ transform: translateX(60vw)  translateY(calc(var(--startY) + 0.7*var(--amp))); }}
+    80%  {{ transform: translateX(85vw)  translateY(calc(var(--startY) - 0.7*var(--amp))); }}
     100% {{ transform: translateX(115vw) translateY(calc(var(--startY))); }}
   }}
 
-  /* Sola uçuş: görüntüyü scaleX(-1) ile çeviriyoruz ki kuş yönüne baksın */
+  /* Sola doğru dalgalı uçuş (kuş yönüne baksın diye scaleX(-1)) */
   @keyframes flyLeft {{
     0%   {{ transform: translateX(115vw) translateY(calc(var(--startY))) scaleX(-1); }}
-    20%  {{ transform: translateX(90vw)  translateY(calc(var(--startY) + 0.6*var(--amp))) scaleX(-1); }}
-    40%  {{ transform: translateX(65vw)  translateY(calc(var(--startY) - 0.6*var(--amp))) scaleX(-1); }}
-    60%  {{ transform: translateX(40vw)  translateY(calc(var(--startY) + 0.6*var(--amp))) scaleX(-1); }}
-    80%  {{ transform: translateX(15vw)  translateY(calc(var(--startY) - 0.6*var(--amp))) scaleX(-1); }}
+    20%  {{ transform: translateX(90vw)  translateY(calc(var(--startY) + 0.7*var(--amp))) scaleX(-1); }}
+    40%  {{ transform: translateX(65vw)  translateY(calc(var(--startY) - 0.7*var(--amp))) scaleX(-1); }}
+    60%  {{ transform: translateX(40vw)  translateY(calc(var(--startY) + 0.7*var(--amp))) scaleX(-1); }}
+    80%  {{ transform: translateX(15vw)  translateY(calc(var(--startY) - 0.7*var(--amp))) scaleX(-1); }}
     100% {{ transform: translateX(-15vw) translateY(calc(var(--startY))) scaleX(-1); }}
   }}
 
-  /* Düşen parçacıklar: konfeti */
+  /* === PARÇACIKLAR === */
+
+  /* KONFETİ: aşağıdan yukarı */
   .confetti {{
     position: absolute;
-    top: -5vh;
+    top: 105vh;               /* başlangıçta ekranın altında */
     width: 8px;
     height: 14px;
     background: #fff;
     opacity: .95;
-    z-index: 2;
-    will-change: transform, opacity;
+    z-index: 5;
+    pointer-events: none;
+    transform: rotate(0deg);
     border-radius: 2px;
     box-shadow: 0 2px 6px rgba(0,0,0,.15);
+    animation: rise linear forwards;
+  }}
+  @keyframes rise {{
+    0%   {{ transform: translateY(0) rotate(0deg);   opacity: .98; }}
+    100% {{ transform: translateY(-120vh) rotate(360deg); opacity: .9; }}
   }}
 
-  @keyframes fall {{
-    0%   {{ transform: translateY(-10vh) rotate(0deg);   opacity: 1;   }}
-    70%  {{ opacity: .95; }}
-    100% {{ transform: translateY(110vh) rotate(360deg); opacity: 0.9; }}
-  }}
-
-  /* Kalp şekli */
+  /* KALP: yukarıdan aşağı */
   .heart {{
     position: absolute;
     top: -6vh;
     width: 14px;
     height: 14px;
     transform: rotate(-45deg);
-    z-index: 1;
+    z-index: 3;
+    pointer-events: none;
     animation: fall linear forwards;
   }}
-  .heart:before,
-  .heart:after {{
+  .heart:before, .heart:after {{
     content: "";
     position: absolute;
     width: 14px; height: 14px;
@@ -245,12 +251,16 @@ if mode == "Günlük Test":
   }}
   .heart:before {{ left: 7px; }}
   .heart:after  {{ top: -7px; }}
+  @keyframes fall {{
+    0%   {{ transform: translateY(0) rotate(-45deg);   opacity: .95; }}
+    100% {{ transform: translateY(120vh) rotate(-45deg); opacity: .9; }}
+  }}
 
-  /* Alt tarafta hafif pembe konfeti zemini (statik) */
+  /* Statik minik serpiştirmeler; görsele benzer doku */
   .static-sprinkles {{
     position: absolute;
     inset: 0;
-    z-index: 0;
+    z-index: 1;
     background-image:
       radial-gradient(circle 3px at 10% 20%, #ffe0ef 95%, transparent 96%),
       radial-gradient(circle 2.5px at 20% 80%, #ffd2ea 95%, transparent 96%),
@@ -261,6 +271,88 @@ if mode == "Günlük Test":
     opacity: .45;
     pointer-events: none;
   }}
+</style>
+</head>
+<body>
+  <div class="celebration" id="celebration">
+      <div class="static-sprinkles"></div>
+      <div class="title">👑 Harikasın 👑</div>
+      <audio id="budgieSound" src="data:audio/mp3;base64,{budgie_sound}"></audio>
+  </div>
+
+<script>
+(function() {{
+  const root = document.getElementById('celebration');
+
+  // Ses
+  const sound = document.getElementById("budgieSound");
+  sound.play().catch(()=>{{}});
+
+  // === UÇAN MUHABBET KUŞLARI ===
+  const BIRD_COUNT = 12;
+  const hues = [0, 35, 90, 180, 220, 290];
+
+  function rnd(min, max) {{ return Math.random() * (max - min) + min; }}
+
+  for (let i = 0; i < BIRD_COUNT; i++) {{
+    const bird = document.createElement('img');
+    bird.src = "data:image/png;base64,{budgie_img}";
+    bird.className = 'bird';
+
+    const startY = Math.floor(rnd(5, 85));       // 5..85 vh
+    const amp    = Math.floor(rnd(6, 18));       // 6..18 vh
+    const size   = rnd(90, 140);                 // px
+    const hue    = hues[Math.floor(Math.random()*hues.length)];
+    const dur    = rnd(3, 6).toFixed(2);         // 3..6 sn
+    const delay  = rnd(0, 2).toFixed(2);
+
+    bird.style.setProperty('--startY', startY + 'vh');
+    bird.style.setProperty('--amp', amp + 'vh');
+    bird.style.setProperty('--hue', hue + 'deg');
+    bird.style.width = size + 'px';
+
+    if (Math.random() < 0.5) {{
+      bird.style.animation = `flyRight ${dur}s linear ${delay}s infinite`;
+    }} else {{
+      bird.style.animation = `flyLeft  ${dur}s linear ${delay}s infinite`;
+    }}
+
+    root.appendChild(bird);
+  }}
+
+  // === KONFETİ (Aşağıdan Yukarı) ===
+  const CONFETTI_COUNT = 130;
+  const confettiColors = ['#ffffff', '#ffd54f', '#ff7abf', '#8be9ff', '#bfff7a', '#ffc1e3'];
+
+  for (let i = 0; i < CONFETTI_COUNT; i++) {{
+    const c = document.createElement('div');
+    c.className = 'confetti';
+    c.style.left = rnd(0, 100) + 'vw';
+    c.style.background = confettiColors[Math.floor(Math.random()*confettiColors.length)];
+    c.style.width  = rnd(6, 10) + 'px';
+    c.style.height = rnd(10, 18) + 'px';
+    c.style.animationDuration = rnd(3, 7).toFixed(2) + 's';
+    c.style.animationDelay    = rnd(0, 3).toFixed(2) + 's';
+    c.style.transform = `rotate(${rnd(0,360)}deg)`;
+    root.appendChild(c);
+  }}
+
+  // === KALPLER (Yukarıdan Aşağı) ===
+  const HEART_COUNT = 45;
+  for (let i = 0; i < HEART_COUNT; i++) {{
+    const h = document.createElement('div');
+    h.className = 'heart';
+    h.style.left = rnd(0, 100) + 'vw';
+    h.style.animationDuration = rnd(4, 8).toFixed(2) + 's';
+    h.style.animationDelay    = rnd(0, 4).toFixed(2) + 's';
+    h.style.opacity = (0.7 + Math.random()*0.3).toFixed(2);
+    root.appendChild(h);
+  }}
+}})();
+</script>
+</body>
+</html>
+""", height=900)
 </style>
 </head>
 <body>
