@@ -257,16 +257,17 @@ for (let i = 0; i < 12; i++) {{
 
   const color = "hsl(" + (Math.random()*360) + ", 80%, 60%)";
 
-  bird.innerHTML = `
-  <svg width="60" height="40" viewBox="0 0 60 40">
-    <ellipse cx="30" cy="25" rx="20" ry="12" fill="${color}" />
-    <circle cx="48" cy="20" r="6" fill="${color}" />
-    <polygon points="54,20 60,23 54,26" fill="orange"/>
-    <circle cx="50" cy="18" r="2" fill="black"/>
-  </svg>
-  ;
+  bird.innerHTML =
+  '<svg width="60" height="40" viewBox="0 0 60 40">' +
+    '<ellipse cx="30" cy="25" rx="20" ry="12" fill="' + color + '" />' +
+    '<circle cx="48" cy="20" r="6" fill="' + color + '" />' +
+    '<polygon points="54,20 60,23 54,26" fill="orange"/>' +
+    '<circle cx="50" cy="18" r="2" fill="black"/>' +
+  '</svg>';
+
   root.appendChild(bird);
 }}
+
 
 
 // CONFETTI
