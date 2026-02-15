@@ -6,6 +6,7 @@ import os
 from datetime import datetime, time, timedelta
 import pytz
 import base64
+from PIL import Image
 
 # ===================== AYARLAR =====================
 TIMEZONE = pytz.timezone("Europe/Istanbul")
@@ -21,12 +22,16 @@ WRONG_FILE = "wrong_questions.json"
 st.set_page_config(page_title="Mini TUS", page_icon="👑")
 
 # ===================== BASE64 =====================
-def get_base64(path):
-    with open(path, "rb") as f:
+def get_base64_resized(path):
+    img = Image.open(path)
+    img = img.resize((300, int(img.height * 300 / img.width)))
+    img.save("temp.png")
+    with open("temp.png", "rb") as f:
         return base64.b64encode(f.read()).decode()
 
-budgie_img = get_base64("static/budgie.png")
+budgie_img = get_base64_resized("static/budgie.png")
 budgie_sound = get_base64("static/budgie.mp3")
+
 
 # ===================== JSON YÜKLE =====================
 def load_json(path, default):
