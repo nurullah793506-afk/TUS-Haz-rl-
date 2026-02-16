@@ -208,7 +208,7 @@ if mode == "Günlük Test":
             el.className="party";
             el.style.left=Math.random()*100+"vw";
             el.style.top="-10vh";
-            el.style.animation=`fallDown ${randomBetween(4,7)}s linear forwards`;
+            el.style.animation="fallDown " + randomBetween(4,7) + "s linear forwards";
             el.style.animationDelay=randomBetween(0,3)+"s";
             document.body.appendChild(el);
             setTimeout(()=>el.remove(),8000);
@@ -222,7 +222,7 @@ if mode == "Günlük Test":
             el.className="party";
             el.style.left=Math.random()*100+"vw";
             el.style.top="100vh";
-            el.style.animation=`floatUp ${randomBetween(3,6)}s linear forwards`;
+            el.style.animation="floatUp " + randomBetween(3,6) + "s linear forwards";
             el.style.animationDelay=randomBetween(0,2)+"s";
             document.body.appendChild(el);
             setTimeout(()=>el.remove(),7000);
@@ -236,7 +236,7 @@ if mode == "Günlük Test":
             el.className="party";
             el.style.top=Math.random()*80+"vh";
             el.style.fontSize="36px";
-            el.style.animation=`flyAcross ${randomBetween(5,8)}s linear forwards`;
+            el.style.animation="flyAcross " + randomBetween(5,8) + "s linear forwards";
             el.style.animationDelay=randomBetween(0,2)+"s";
             document.body.appendChild(el);
             setTimeout(()=>el.remove(),9000);
