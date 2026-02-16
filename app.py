@@ -198,7 +198,11 @@ if mode == "Günlük Test":
         st.stop()
 
     q = today_questions[q_index]
-
+    if "show_message" in st.session_state:
+    if st.session_state.show_message:
+        st.success(f"🎉 {st.session_state.show_message}")
+    del st.session_state["show_message"]
+    
     st.subheader(f"Soru {q_index + 1}")
     st.write(q["soru"])
 
