@@ -22,6 +22,10 @@ ASKED_FILE = BASE_DIR / "asked_questions.json"
 WEEKLY_FILE = BASE_DIR / "weekly_scores.json"
 WRONG_FILE = BASE_DIR / "wrong_questions.json"
 
+# 🔥 YENİ EKLENEN DOSYALAR
+MESSAGES_FILE = BASE_DIR / "messages.json"
+USED_MESSAGES_FILE = BASE_DIR / "used_messages.json"
+
 st.set_page_config(page_title="Mini TUS", page_icon="👑")
 
 # ===================== BASE64 =====================
@@ -59,6 +63,32 @@ def load_json(path, default):
 def save_json(path, data):
     with open(path, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
+
+# 🔥 MESAJ SİSTEMİ
+def get_random_message():
+    messages = load_json(MESSAGES_FILE, [])
+    used = load_json(USED_MESSAGES_FILE, [])
+
+    # Eğer mesaj kalmadıysa reset
+    if len(messages) == 0:
+        messages = used
+        used = []
+        save_json(MESSAGES_FILE, messages)
+        save_json(USED_MESSAGES_FILE, used)
+
+    if not messages:
+        return None
+
+    selected = random.choice(messages)
+
+    messages.remove(selected)
+    used.append(selected)
+
+    save_json(MESSAGES_FILE, messages)
+    save_json(USED_MESSAGES_FILE, used)
+
+    return selected
+
 
 questions = load_json(QUESTIONS_FILE, [])
 asked_questions = load_json(ASKED_FILE, [])
@@ -179,13 +209,11 @@ if mode == "Günlük Test":
         wrong_dict = {w["id"]: w for w in wrong_questions}
         wrong_entry = wrong_dict.get(q["id"])
 
-
         if choice == q["dogru"]:
 
             asked_questions.append(q["id"])
             save_json(ASKED_FILE, asked_questions)
 
-            # Eğer retry sorusuysa ve ilk denemede doğruysa sil
             if wrong_entry:
                 wrong_date = datetime.strptime(
                     wrong_entry["wrong_date"], "%Y-%m-%d"
@@ -197,6 +225,11 @@ if mode == "Günlük Test":
                             w for w in wrong_questions if w["id"] != q["id"]
                         ]
                         save_json(WRONG_FILE, wrong_questions)
+
+            # 🔥 MESAJ BURADA
+            mesaj = get_random_message()
+            if mesaj:
+                st.success(f"🎉 {mesaj}")
 
             st.session_state.correct_count += 1
             st.session_state.q_index += 1
@@ -213,7 +246,6 @@ if mode == "Günlük Test":
                     wrong_entry["wrong_date"], "%Y-%m-%d"
                 ).date()
 
-                # retry sırasında yine yanlışsa tarihi güncelle
                 if (now_dt.date() - wrong_date).days >= 2:
                     wrong_entry["wrong_date"] = today
                     save_json(WRONG_FILE, wrong_questions)
