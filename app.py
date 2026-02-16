@@ -189,13 +189,31 @@ if mode == "Günlük Test":
     q_index = st.session_state.q_index
 
     if q_index >= len(today_questions):
+
         if not st.session_state.finished:
             weekly_scores[today] = weekly_scores.get(today, 0) + st.session_state.correct_count
             save_json(WEEKLY_FILE, weekly_scores)
             st.session_state.finished = True
-
+    
+        # 🎉 KUTLAMA BLOĞU
+        st.balloons()
+    
+        if budgie_img:
+            st.image(f"data:image/png;base64,{budgie_img}", use_column_width=False)
+    
+        if budgie_sound:
+            components.html(
+                f"""
+                <audio autoplay>
+                <source src="data:audio/mp3;base64,{budgie_sound}" type="audio/mp3">
+                </audio>
+                """,
+                height=0,
+            )
+    
         st.success("🎉 Oturum tamamlandı!")
         st.stop()
+
 
     q = today_questions[q_index]
     if "show_message" in st.session_state:
