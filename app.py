@@ -12,8 +12,8 @@ from pathlib import Path
 
 # ===================== AYARLAR =====================
 TIMEZONE = pytz.timezone("Europe/Istanbul")
-MORNING_TIME = time(3, 43)
-EVENING_TIME = time(3,20)
+MORNING_TIME = time(8, 00)
+EVENING_TIME = time(20,00)
 GUNLUK_SORU_SAYISI = 5
 
 BASE_DIR = Path(__file__).parent
@@ -99,10 +99,10 @@ now_time = now_dt.time()
 if now_time >= MORNING_TIME or now_time < EVENING_TIME:
     if now_time >= MORNING_TIME:
         session_type = "morning"
-        st.title("🌅 Günaydın - Sabah Testi")
+        st.title("🌅 Günaydın Güzelliğim - Hadi Uyanma Testlerimizi Çözelim")
     else:
         session_type = "evening"
-        st.title("🌙 İyi akşamlar - Akşam Testi")
+        st.title("🌙 İyi akşamlar Sevdiceğim - Dizimizin Yeni Bölümü Yayınlandı")
 else:
     st.info("Test saati henüz gelmedi")
     st.stop()
@@ -125,7 +125,7 @@ if mode == "Yanlışlarım":
             st.write("###", q["soru"])
             for sec in q["secenekler"]:
                 st.write("-", sec)
-            st.write("✅ Doğru:", q["dogru"])
+            st.write("✅ Adamsın:", q["dogru"])
             st.write("---")
 
     st.stop()
@@ -156,7 +156,7 @@ if mode == "Günlük Test":
                 wrong_date = datetime.strptime(
                     wrong_entry["wrong_date"], "%Y-%m-%d"
                 ).date()
-                if (now_dt.date() - wrong_date).days < 2:
+                if (now_dt.date() - wrong_date).days < 3:
                     continue
 
             remaining.append(q)
@@ -173,16 +173,16 @@ if mode == "Günlük Test":
     q_index = st.session_state.q_index
 
     # OTURUM BİTTİ
-    if q_index >= len(today_questions):
 
+    if q_index >= len(today_questions):
+    
         if not st.session_state.finished:
-            # 🔥 weekly skor artık ilk deneme doğruya göre
-            weekly_scores[today] = weekly_scores.get(today, 0) + st.session_state.first_attempt_correct
+            weekly_scores[today] = st.session_state.first_attempt_correct
             save_json(WEEKLY_FILE, weekly_scores)
             st.session_state.finished = True
-
-        # 🔥 şölen artık ilk deneme doğruya göre
+    
         if st.session_state.first_attempt_correct >= 4:
+
             components.html(f"""
             <style>
             @keyframes fall {{0%{{transform:translateY(-10vh);}}100%{{transform:translateY(110vh);}}}}
@@ -205,7 +205,7 @@ if mode == "Günlük Test":
             </audio>
             """, height=600)
 
-        st.success("🎉 Oturum tamamlandı!")
+        st.success("🎉 Hadi iyisin bu bölüm bitti!")
         st.stop()
 
     q = today_questions[q_index]
@@ -246,7 +246,7 @@ if mode == "Günlük Test":
             st.rerun()
 
         else:
-            st.error("Yanlış ❌ Tekrar deneyin.")
+            st.error("OLmadı Aşkım ❌ Hadi tekrar deneyekim.")
 
             if is_first_try:
                 st.session_state.first_attempt_done.add(q["id"])
@@ -257,3 +257,27 @@ if mode == "Günlük Test":
                     "wrong_date": today
                 })
                 save_json(WRONG_FILE, wrong_questions)
+# ===================== İSTATİSTİK PANELİ =====================
+st.sidebar.markdown("---")
+st.sidebar.subheader("📊 İstatistikler")
+
+today_score = weekly_scores.get(today, 0)
+
+st.sidebar.write("📅 Bugün İlk Deneme Doğru:", today_score)
+
+if GUNLUK_SORU_SAYISI > 0:
+    success_rate = round((today_score / GUNLUK_SORU_SAYISI) * 100, 1)
+else:
+    success_rate = 0
+
+st.sidebar.write("🎯 Başarı Oranı:", f"%{success_rate}")
+
+st.sidebar.write("🧠 Toplam Çözülen Soru:", len(asked_questions))
+st.sidebar.write("❌ Toplam Yanlış Soru:", len(wrong_questions))
+
+st.sidebar.markdown("### 📈 Son 7 Gün")
+
+sorted_days = sorted(weekly_scores.keys(), reverse=True)[:7]
+
+for day in sorted_days:
+    st.sidebar.write(f"{day} → {weekly_scores[day]} doğru")
