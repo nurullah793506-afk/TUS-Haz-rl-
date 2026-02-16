@@ -213,9 +213,18 @@ if mode == "Günlük Test":
         <div class="item" style="left:75vw; animation:rise 4.5s linear infinite;">🎊</div>
         
         <!-- KUŞLAR -->
-        <div class="item" style="top:20vh; font-size:36px; animation:fly 8s linear infinite;">🐦</div>
-        <div class="item" style="top:50vh; font-size:36px; animation:fly 6s linear infinite;">🐦</div>
-        <div class="item" style="top:70vh; font-size:36px; animation:fly 7s linear infinite;">🐦</div>
+        <img src="data:image/png;base64,{budgie_img}" 
+             class="item" 
+             style="top:20vh; width:80px; animation:fly 8s linear infinite;" />
+        
+        <img src="data:image/png;base64,{budgie_img}" 
+             class="item" 
+             style="top:50vh; width:90px; animation:fly 6s linear infinite;" />
+        
+        <img src="data:image/png;base64,{budgie_img}" 
+             class="item" 
+             style="top:70vh; width:85px; animation:fly 7s linear infinite;" />
+
         
         <audio autoplay>
         <source src="data:audio/mp3;base64,{budgie_sound}" type="audio/mp3">
