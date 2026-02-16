@@ -106,7 +106,24 @@ if mode == "Günlük Test":
         st.session_state.correct_count = 0
         st.session_state.finished = False
 
-        remaining = [q for q in questions if q["id"] not in asked_questions]
+        remaining = []
+
+        for q in questions:
+        
+            # Doğru cevaplanmışsa bir daha sorma
+            if q["id"] in asked_questions:
+                continue
+        
+            # Yanlışlar kontrol
+            wrong_entry = next((w for w in wrong_questions if w["id"] == q["id"]), None)
+        
+            if wrong_entry:
+                wrong_date = datetime.strptime(wrong_entry["wrong_date"], "%Y-%m-%d").date()
+                if (now_dt.date() - wrong_date).days < 2:
+                    continue  # 2 gün dolmadı, sorma
+        
+            remaining.append(q)
+
 
         if len(remaining) < GUNLUK_SORU_SAYISI:
             st.success("🎉 Tüm sorular tamamlandı!")
@@ -331,11 +348,19 @@ for (let i = 0; i < 25; i++) {{
         if choice == q["dogru"]:
             asked_questions.append(q["id"])
             save_json(ASKED_FILE, asked_questions)
+    
+            # wrong listesinden çıkar
+            wrong_questions[:] = [w for w in wrong_questions if w["id"] != q["id"]]
+            save_json(WRONG_FILE, wrong_questions)
+        
             st.session_state.correct_count += 1
             st.session_state.q_index += 1
             st.rerun()
         else:
             st.warning("Yanlış oldu, tekrar deneyelim.")
             if not any(w["id"] == q["id"] for w in wrong_questions):
-                wrong_questions.append({"id": q["id"], "date": today})
+                wrong_questions.append({
+                    "id": q["id"],
+                    "wrong_date": today
+                })
                 save_json(WRONG_FILE, wrong_questions)
