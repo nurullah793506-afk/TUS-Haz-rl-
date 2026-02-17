@@ -12,7 +12,7 @@ from pathlib import Path
 
 # ===================== AYARLAR =====================
 TIMEZONE = pytz.timezone("Europe/Istanbul")
-MORNING_TIME = time(11, 31)
+MORNING_TIME = time(13, 28)
 EVENING_TIME = time(20,00)
 GUNLUK_SORU_SAYISI = 5
 
