@@ -169,7 +169,16 @@ if mode == "Günlük Test":
                 @keyframes fall {{0%{{transform:translateY(-10vh);}}100%{{transform:translateY(110vh);}}}}
                 @keyframes rise {{0%{{transform:translateY(100vh);}}100%{{transform:translateY(-20vh);}}}}
                 @keyframes fly {{0%{{transform:translateX(-10vw);}}100%{{transform:translateX(110vw);}}}}
-                .item {{position:fixed;font-size:28px;z-index:9999;pointer-events:none;}}
+                .overlay {{
+                position:fixed;
+                top:0;
+                left:0;
+                width:100vw;
+                height:100vh;
+                pointer-events:none;
+                z-index:9999;
+                }}
+                .item {{position:fixed;font-size:28px;}}
                 </style>
         
                 <div class="item" style="left:10vw;animation:fall 6s linear infinite;">💖</div>
@@ -184,7 +193,8 @@ if mode == "Günlük Test":
                 <audio autoplay>
                 <source src="data:audio/mp3;base64,{budgie_sound}" type="audio/mp3">
                 </audio>
-                """, height=600)
+                </div>
+                """, height=0)
         
         st.success("🎉 Hadi iyisin bu bölüm bitti!")
         st.stop()
@@ -207,6 +217,9 @@ if mode == "Günlük Test":
 
             if is_first_try:
                 st.session_state.first_attempt_correct += 1
+                    # Sidebar anlık güncellensin
+                weekly_scores[today] = st.session_state.first_attempt_correct
+                save_json(WEEKLY_FILE, weekly_scores)
 
             st.session_state.first_attempt_done.add(q["id"])
 
