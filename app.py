@@ -158,12 +158,36 @@ if mode == "Günlük Test":
     if q_index >= len(today_questions):
 
         if not st.session_state.finished:
-            weekly_scores[today] = st.session_state.first_attempt_correct
-            save_json(WEEKLY_FILE, weekly_scores)
-            st.session_state.finished = True
-
-        st.success("🎉 Hadi iyisin bu bölüm bitti!")
-        st.stop()
+                weekly_scores[today] = st.session_state.first_attempt_correct
+                save_json(WEEKLY_FILE, weekly_scores)
+                st.session_state.finished = True
+        
+            if st.session_state.first_attempt_correct >= 4:
+        
+                components.html(f"""
+                <style>
+                @keyframes fall {{0%{{transform:translateY(-10vh);}}100%{{transform:translateY(110vh);}}}}
+                @keyframes rise {{0%{{transform:translateY(100vh);}}100%{{transform:translateY(-20vh);}}}}
+                @keyframes fly {{0%{{transform:translateX(-10vw);}}100%{{transform:translateX(110vw);}}}}
+                .item {{position:fixed;font-size:28px;z-index:9999;pointer-events:none;}}
+                </style>
+        
+                <div class="item" style="left:10vw;animation:fall 6s linear infinite;">💖</div>
+                <div class="item" style="left:30vw;animation:fall 5s linear infinite;">💖</div>
+                <div class="item" style="left:50vw;animation:rise 4s linear infinite;">🎊</div>
+                <div class="item" style="left:70vw;animation:rise 5s linear infinite;">🎊</div>
+        
+                <img src="data:image/png;base64,{budgie_img}"
+                     class="item"
+                     style="top:30vh;width:80px;animation:fly 8s linear infinite;" />
+        
+                <audio autoplay>
+                <source src="data:audio/mp3;base64,{budgie_sound}" type="audio/mp3">
+                </audio>
+                """, height=600)
+        
+            st.success("🎉 Hadi iyisin bu bölüm bitti!")
+            st.stop()
 
     q = today_questions[q_index]
 
