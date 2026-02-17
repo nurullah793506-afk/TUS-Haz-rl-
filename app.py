@@ -207,6 +207,7 @@ if mode == "Günlük Test":
     options = q["secenekler"]
     selected = st.radio("Cevabınız:", options, key=f"radio_{q_index}")
 
+
     # ===================== CEVAP BLOĞU (DÜZELTİLDİ) =====================
 
     if st.button("Cevapla", key=f"btn_{q_index}"):
@@ -234,7 +235,7 @@ if mode == "Günlük Test":
 
             msg = get_random_message()
             if msg:
-                st.success(f"🎉 {msg}")
+                st.session_state.show_message = msg
 
             st.session_state.q_index += 1
             st.rerun()
@@ -260,8 +261,31 @@ if mode == "Günlük Test":
 
             save_json(WRONG_FILE, wrong_questions)
 
+# ===================== YANLIŞLARIM =====================
+
+if mode == "Yanlışlarım":
+
+    wrong_questions = load_json(WRONG_FILE, [])
+
+    if not wrong_questions:
+        st.info("Henüz yanlış yaptığın soru yok 🎉")
+        st.stop()
+
+    wrong_ids = [w["id"] for w in wrong_questions]
+    wrong_list = [q for q in questions if q["id"] in wrong_ids]
+
+    for q in wrong_list:
+        st.subheader("Yanlış Soru")
+        st.write(q["soru"])
+        st.write("Doğru Cevap:", q["dogru"])
+        st.markdown("---")
+
+    st.stop() 
+
+
 
 # ===================== İSTATİSTİK PANELİ =====================
+wrong_questions = load_json(WRONG_FILE, [])
 st.sidebar.markdown("---")
 st.sidebar.subheader("📊 İstatistikler")
 
@@ -270,13 +294,20 @@ today_score = weekly_scores.get(today, 0)
 st.sidebar.write("📅 Bugün İlk Deneme Doğru:", today_score)
 
 if GUNLUK_SORU_SAYISI > 0:
-    success_rate = round((today_score / GUNLUK_SORU_SAYISI) * 100, 1)
+    solved_today = st.session_state.q_index
+    if solved_today > 0:
+        success_rate = round((today_score / solved_today) * 100, 1)
+    else:
+        success_rate = 0
 else:
     success_rate = 0
 
 st.sidebar.write("🎯 Başarı Oranı:", f"%{success_rate}")
 
-st.sidebar.write("🧠 Toplam Çözülen Soru:", len(asked_questions))
+all_ids = set(asked_questions) | set(w["id"] for w in wrong_questions)
+total_solved = len(all_ids)
+st.sidebar.write("🧠 Toplam Çözülen Soru:", total_solved)
+
 st.sidebar.write("❌ Toplam Yanlış Soru:", len(wrong_questions))
 
 st.sidebar.markdown("### 📈 Son 7 Gün")
