@@ -71,9 +71,11 @@ def show_love_explosion():
         """
         <style>
         body.flash {
-            animation: flashBg 0.6s ease;
+            animation: flashBg 0.9s ease;
         }
 
+
+        
         @keyframes flashBg {
             0% { background-color: #ffe6f2; }
             100% { background-color: transparent; }
