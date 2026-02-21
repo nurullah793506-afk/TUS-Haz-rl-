@@ -9,7 +9,7 @@ import base64
 from PIL import Image
 from io import BytesIO
 from pathlib import Path
-import time
+import time as pytime
 
 # ===================== AYARLAR =====================
 TIMEZONE = pytz.timezone("Europe/Istanbul")
@@ -306,7 +306,7 @@ if mode == "Günlük Test":
             st.session_state.q_index += 1
             
             # Animasyonun görünmesi için küçük bekleme
-            time.sleep(1.5)
+            pytime.sleep(1.5)
             
             st.rerun()
 
