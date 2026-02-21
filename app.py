@@ -18,6 +18,20 @@ GUNLUK_SORU_SAYISI = 5
 
 BASE_DIR = Path(__file__).parent
 QUESTIONS_FILE = BASE_DIR / "questions.json"
+MESSAGES_FILE = BASE_DIR / "messages.json"
+
+def load_first_try_messages():
+    try:
+        with open(MESSAGES_FILE, "r", encoding="utf-8") as f:
+            data = json.load(f)
+            return data.get("first_try", [])
+    except:
+        return []
+
+FIRST_TRY_MESSAGES = load_first_try_messages()
+
+
+
 
 st.set_page_config(page_title="Mini TUS", page_icon="👑")
 
@@ -52,6 +66,24 @@ def get_base64_resized(path):
     return base64.b64encode(buffer.getvalue()).decode()
 
 questions = load_questions()
+# ===================== SABİT MESAJLAR =====================
+
+RECOVERY_MESSAGES = [
+    "Bak gördün mü, vazgeçmeyince oluyormuş 💛",
+    "İkinci denemede bile parlıyorsun 😌",
+]
+
+WRONG_MESSAGES = [
+    "Olmadı ama sorun değil, devam 💕",
+    "Hata yapmak serbest, vazgeçmek yasak 💛",
+]
+
+FINISH_MESSAGES = [
+    "Bugünkü performansınla kalbimde kadro garantiledin 💖",
+    "Bugün de zekana aşık oldum 😌",
+]
+
+
 
 now_dt = datetime.now(TIMEZONE)
 today = now_dt.strftime("%Y-%m-%d")
@@ -65,7 +97,7 @@ else:
     session_type = "evening"
     st.title("🌙 İyi Akşamlar Sevdiceğim")
 
-session_key = f"{today}_{session_type}"
+session_key = today
 mode = st.sidebar.radio("Mod Seç", ["Günlük Test", "Yanlışlarım"])
 
 # ===================== GÜNLÜK TEST =====================
@@ -77,7 +109,7 @@ if mode == "Günlük Test":
         st.session_state.q_index = 0
         st.session_state.first_attempt_correct = 0
         st.session_state.first_attempt_done = set()
-        st.session_state.finished = False
+        
 
         remaining = []
 
@@ -102,19 +134,23 @@ if mode == "Günlük Test":
                 if now_dt.date() >= review_date:
                     remaining.append(q)
 
-        if len(remaining) < GUNLUK_SORU_SAYISI:
+        if not remaining:
             st.success("🎉 Tüm sorular tamamlandı!")
             st.stop()
 
         st.session_state.today_questions = random.sample(
-            remaining, GUNLUK_SORU_SAYISI
+            remaining,
+            min(GUNLUK_SORU_SAYISI, len(remaining))
         )
+
 
     today_questions = st.session_state.today_questions
     q_index = st.session_state.q_index
 
     if q_index >= len(today_questions):
         st.success("🎉 Hadi iyisin bu bölüm bitti!")
+        st.success(random.choice(FINISH_MESSAGES))
+        st.write(f"İlk denemede doğru: {st.session_state.first_attempt_correct}")
         st.stop()
 
     q = today_questions[q_index]
@@ -133,24 +169,34 @@ if mode == "Günlük Test":
         is_first_try = q["id"] not in st.session_state.first_attempt_done
 
         if selected == q["dogru"]:
-
+        
             if is_first_try:
                 st.session_state.first_attempt_correct += 1
-
+        
+                if FIRST_TRY_MESSAGES:
+                    message = random.choice(FIRST_TRY_MESSAGES)
+                else:
+                    message = "💖"
+        
+            else:
+                message = random.choice(RECOVERY_MESSAGES)
+        
+            st.success(message)
+        
             st.session_state.first_attempt_done.add(q["id"])
-
+        
             cursor.execute("""
                 INSERT OR REPLACE INTO progress (question_id, status, next_review)
                 VALUES (?, 'correct', NULL)
             """, (q["id"],))
             conn.commit()
-
+        
             st.session_state.q_index += 1
             st.rerun()
 
         else:
 
-            st.error("Olmadı Aşkım ❌ Hadi tekrar deneyelim.")
+            st.error(random.choice(WRONG_MESSAGES))
 
             if is_first_try:
                 st.session_state.first_attempt_done.add(q["id"])
