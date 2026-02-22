@@ -15,6 +15,7 @@ QUESTIONS_FILE = "questions.json"
 ASKED_FILE = "asked_questions.json"
 MESSAGES_FILE = "messages.json"
 USED_MESSAGES_FILE = "used_messages.json"
+PROGRESS_FILE = "progress.json"
 # ==================================================
 
 st.set_page_config(page_title="Günün Seçilmiş Soruları", page_icon="🌸")
@@ -57,14 +58,12 @@ questions = load_json(QUESTIONS_FILE, [])
 asked_questions = load_json(ASKED_FILE, [])
 messages = load_json(MESSAGES_FILE, [])
 used_messages = load_json(USED_MESSAGES_FILE, [])
+progress = load_json(PROGRESS_FILE, {})
 # ==================================================
 
 # ===================== PERIOD KONTROL =====================
-if "period" not in st.session_state or st.session_state.period != current_period:
-    st.session_state.period = current_period
-    st.session_state.q_index = 0
-    st.session_state.today_questions = []
-    st.session_state.show_message = None
+
+if progress.get("period") != current_period:
 
     remaining = [q for q in questions if q["id"] not in asked_questions]
 
@@ -72,9 +71,19 @@ if "period" not in st.session_state or st.session_state.period != current_period
         st.success("🎉 Tüm sorular tamamlandı!")
         st.stop()
 
-    st.session_state.today_questions = random.sample(
-        remaining, GUNLUK_SORU_SAYISI
-    )
+    today_questions = random.sample(remaining, GUNLUK_SORU_SAYISI)
+
+    progress = {
+        "period": current_period,
+        "q_index": 0,
+        "today_questions": today_questions
+    }
+
+    save_json(PROGRESS_FILE, progress)
+
+# Session state'i progress'ten doldur
+st.session_state.q_index = progress["q_index"]
+st.session_state.today_questions = progress["today_questions"]
 # ========================================================
 # ===================== MESAJ GÖSTER =====================
 if "show_message" in st.session_state and st.session_state.show_message:
@@ -128,6 +137,10 @@ if st.button("Cevabı Onayla ✅"):
             st.session_state.show_message = "💌 Tüm mesajlar kullanıldı 💖"
 
         st.session_state.q_index += 1
+
+        progress["q_index"] = st.session_state.q_index
+        save_json(PROGRESS_FILE, progress)
+        
         st.rerun()
 
     else:
