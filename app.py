@@ -20,11 +20,22 @@ USED_MESSAGES_FILE = "used_messages.json"
 st.set_page_config(page_title="Günün Seçilmiş Soruları", page_icon="🌸")
 st.title("🌸 Günaydın Güzelliğim 💖")
 
-# ===================== ZAMAN KONTROL =====================
-now = datetime.now(TIMEZONE).time()
-if now < ACILIS_SAATI:
-    st.info(f"⏰ Günün seçilmiş soruları saat {ACILIS_SAATI.strftime('%H:%M')}'de açılacak 💖")
+# ===================== SLOT KONTROL =====================
+now_dt = datetime.now(TIMEZONE)
+now = now_dt.time()
+today = now_dt.strftime("%Y-%m-%d")
+
+slot = None
+
+if MORNING_TIME <= now < EVENING_TIME:
+    slot = "morning"
+elif now >= EVENING_TIME:
+    slot = "evening"
+else:
+    st.info("⏰ Sorular sabah 08:00 ve akşam 20:00'de açılır 💖")
     st.stop()
+
+current_period = f"{today}_{slot}"
 # ========================================================
 
 # ===================== JSON YARDIMCILAR =====================
@@ -48,11 +59,9 @@ messages = load_json(MESSAGES_FILE, [])
 used_messages = load_json(USED_MESSAGES_FILE, [])
 # ==================================================
 
-# ===================== GÜN KONTROL =====================
-today = datetime.now(TIMEZONE).strftime("%Y-%m-%d")
-
-if "today" not in st.session_state or st.session_state.today != today:
-    st.session_state.today = today
+# ===================== PERIOD KONTROL =====================
+if "period" not in st.session_state or st.session_state.period != current_period:
+    st.session_state.period = current_period
     st.session_state.q_index = 0
     st.session_state.today_questions = []
     st.session_state.show_message = None
@@ -66,6 +75,7 @@ if "today" not in st.session_state or st.session_state.today != today:
     st.session_state.today_questions = random.sample(
         remaining, GUNLUK_SORU_SAYISI
     )
+# ========================================================
 # ==================================================
 
 # ===================== ROMANTİK MESAJ GÖSTER =====================
