@@ -237,7 +237,7 @@
     "id": 40,
     "soru": "Akut miyokard enfarktüsünde en erken yükselen belirteç hangisidir?",
     "secenekler": ["Troponin", "CK-MB", "Myoglobin", "LDH"],
-    "dogru": " Troponin"
+    "dogru": "Troponin"
   },
   {
     "id": 41,
