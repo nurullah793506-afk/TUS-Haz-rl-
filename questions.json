@@ -121,488 +121,608 @@
   },
   {
     "id": 21,
-    "soru": "Akut mezenter iskemi için en tipik laboratuvar bulgusu hangisidir?",
-    "secenekler": ["Yüksek amilaz", "Yüksek laktat", "Hiperkalemi", "Düşük CRP"],
-    "dogru": "Yüksek laktat"
+    "soru": "Paget hastalığında (Osteitis Deformans) en tipik laboratuvar bulgusu aşağıdakilerden hangisidir?",
+    "secenekler": ["Yüksek Kalsiyum", "Düşük Fosfor", "Yüksek ALP / Normal Kalsiyum", "Yüksek PTH"],
+    "dogru": "Yüksek ALP / Normal Kalsiyum"
   },
   {
     "id": 22,
-    "soru": "Romatoid artritte en spesifik antikor hangisidir?",
-    "secenekler": ["ANA", "RF", "Anti-CCP", "ANCA"],
-    "dogru": "Anti-CCP"
+    "soru": "Çocukluk çağında kanlı diyare sonrası gelişen anemi, trombositopeni ve akut böbrek yetmezliği üçlemesinde en olası tanı nedir?",
+    "secenekler": ["HSP", "HUS (Hemolitik Üremik Sendrom)", "TTP", "DIC"],
+    "dogru": "HUS (Hemolitik Üremik Sendrom)"
   },
   {
     "id": 23,
-    "soru": "Akut epidural hematom en sık hangi damar rüptürü ile oluşur?",
-    "secenekler": ["Köprü ven", "A. meningea media", "A. cerebri media", "Baziler arter"],
-    "dogru": "A. meningea media"
+    "soru": "İnfantil hipertrofik pilor stenozunda beklenen en tipik asit-baz ve elektrolit bozukluğu hangisidir?",
+    "secenekler": ["Metabolik asidoz", "Hipokloremik hipokalemik metabolik alkaloz", "Hiperkloremik asidoz", "Respiratuvar alkaloz"],
+    "dogru": "Hipokloremik hipokalemik metabolik alkaloz"
   },
   {
     "id": 24,
-    "soru": "Hipertiroidide en sık görülen kemik komplikasyonu nedir?",
-    "secenekler": ["Osteomalazi", "Osteoporoz", "Paget hastalığı", "Kemik metastazı"],
-    "dogru": "Osteoporoz"
+    "soru": "İnvajinasyonda (İntussusepsiyon) fizik muayenede sağ üst kadranda saptanan kitleye ne ad verilir?",
+    "secenekler": ["Murphy belirtisi", "Dance belirtisi", "McBurney noktası", "Rovsing bulgusu"],
+    "dogru": "Dance belirtisi"
   },
   {
     "id": 25,
-    "soru": "HIV enfeksiyonunda CD4 <200 olduğunda en sık görülen fırsatçı enfeksiyon hangisidir?",
-    "secenekler": ["CMV retiniti", "Pneumocystis jirovecii pnömonisi", "Toksoplazma", "Kriptokok menenjiti"],
-    "dogru": "Pneumocystis jirovecii pnömonisi"
+    "soru": "Aşırı A vitamini alımına bağlı gelişen kafa içi basınç artışı sendromuna ne ad verilir?",
+    "secenekler": ["Psödotümör serebri", "Meniere hastalığı", "Cushing triadı", "Wernicke sendromu"],
+    "dogru": "Psödotümör serebri"
   },
   {
     "id": 26,
-    "soru": "Hiperkalsemiye bağlı EKG değişikliği hangisidir?",
-    "secenekler": ["QT uzaması", "QT kısalması", "PR uzaması", "ST elevasyonu"],
-    "dogru": "QT kısalması"
-  },
-  {
-    "id": 27,
-    "soru": "Aort stenozunda tipik oskültasyon bulgusu nedir?",
-    "secenekler": ["Diyastolik üfürüm", "Sistolik ejeksiyon üfürümü", "Kontinü üfürüm", "S3"],
-    "dogru": "Sistolik ejeksiyon üfürümü"
-  },
-  {
-    "id": 28,
-    "soru": "Hiponatreminin hızlı düzeltilmesi sonucu gelişebilecek en ciddi komplikasyon nedir?",
-    "secenekler": ["Serebral ödem", "Osmotik demiyelinizasyon", "Epilepsi", "Hiperkalemi"],
-    "dogru": "Osmotik demiyelinizasyon"
-  },
-  {
-    "id": 29,
-    "soru": "Cushing sendromunun en sık nedeni nedir?",
-    "secenekler": ["Hipofiz adenomu", "Adrenal adenom", "Ektopik ACTH", "Steroid kullanımı"],
-    "dogru": "Steroid kullanımı"
-  },
-  {
-    "id": 30,
-    "soru": "Ağrısız hematüri ile başvuran yaşlı hastada ilk düşünülmesi gereken tanı nedir?",
-    "secenekler": ["Glomerülonefrit", "BPH", "Mesane kanseri", "Üreter taşı"],
-    "dogru": "Mesane kanseri"
-  },
-  {
-    "id": 31,
-    "soru": "Akut kalp yetmezliğinde BNP artışının temel nedeni nedir?",
-    "secenekler": ["Hipoksi", "Ventrikül duvar gerilimi", "Taşikardi", "Hipertansiyon"],
-    "dogru": "Ventrikül duvar gerilimi"
-  },
-  {
-    "id": 32,
-    "soru": "Graves hastalığında oftalmopatinin temel mekanizması nedir?",
-    "secenekler": ["TSH eksikliği", "Antikor aracılı inflamasyon", "Kortizol artışı", "İyot fazlalığı"],
-    "dogru": "Antikor aracılı inflamasyon"
-  },
-  {
-    "id": 33,
-    "soru": "Akut bakteriyel menenjitte BOS glukoz düzeyi nasıldır?",
-    "secenekler": ["Yüksek", "Normal", "Düşük", "Dalgalı"],
-    "dogru": "Düşük"
-  },
-  {
-    "id": 34,
-    "soru": "Hiperkapnik solunum yetmezliği en sık hangi hastalıkta görülür?",
-    "secenekler": ["Astım", "KOAH", "Pnömoni", "Pulmoner emboli"],
-    "dogru": "KOAH"
-  },
-  {
-    "id": 35,
-    "soru": "Subdural hematom en sık hangi mekanizma ile oluşur?",
-    "secenekler": ["Arter rüptürü", "Köprü ven yırtılması", "AVM rüptürü", "Kavernöz sinüs trombozu"],
-    "dogru": "Köprü ven yırtılması"
-  },
-  {
-    "id": 36,
-    "soru": "Hipotiroidide en tipik laboratuvar bulgusu nedir?",
-    "secenekler": ["TSH düşük", "TSH yüksek", "T3 yüksek", "T4 yüksek"],
-    "dogru": "TSH yüksek"
-  },
-  {
-    "id": 37,
-    "soru": "Akut romatizmal ateşte majör kriterlerden biri hangisidir?",
-    "secenekler": ["Ateş", "Artralji", "Kardit", "Yüksek CRP"],
-    "dogru": "Kardit"
-  },
-  {
-    "id": 38,
-    "soru": "Kolorektal kanserde en sık metastaz yeri hangisidir?",
-    "secenekler": ["Akciğer", "Karaciğer", "Kemik", "Beyin"],
-    "dogru": "Karaciğer"
-  },
-  {
-    "id": 39,
-    "soru": "Addison krizinde ilk tedavi yaklaşımı nedir?",
-    "secenekler": ["İnsülin", "Hidrokortizon", "Tiroksin", "Beta bloker"],
-    "dogru": "Hidrokortizon"
-  },
-  {
-    "id": 40,
-    "soru": "Akut miyokard enfarktüsünde en erken yükselen belirteç hangisidir?",
-    "secenekler": ["Troponin", "CK-MB", "Myoglobin", "LDH"],
-    "dogru": "Troponin"
-  },
-  {
-    "id": 41,
-    "soru": "Ankilozan spondilitte en sık pozitif olan HLA tipi hangisidir?",
-    "secenekler": ["HLA-B27", "HLA-DR4", "HLA-B51", "HLA-A3"],
-    "dogru": "HLA-B27"
-  },
-  {
-    "id": 42,
-    "soru": "Primer biliyer kolanjitte en tipik laboratuvar bulgusu hangisidir?",
-    "secenekler": ["AST yüksekliği", "ALT yüksekliği", "ALP yüksekliği", "Bilirubin düşüklüğü"],
-    "dogru": "ALP yüksekliği"
-  },
-  {
-    "id": 43,
-    "soru": "Akut tübüler nekrozda FeNa genellikle kaçtır?",
-    "secenekler": ["<1%", ">2%", "<0.5%", "Normal"],
-    "dogru": ">2%"
-  },
-  {
-    "id": 44,
-    "soru": "Hipoglisemide Whipple triadında yer almayan hangisidir?",
-    "secenekler": ["Semptom varlığı", "Düşük plazma glukozu", "Glukoz verilince düzelme", "İnsülin yüksekliği"],
-    "dogru": "İnsülin yüksekliği"
-  },
-  {
-    "id": 45,
-    "soru": "Akut peritonitte en erken fizik muayene bulgusu nedir?",
-    "secenekler": ["Rijidite", "Rebound", "Tahta karın", "Hassasiyet"],
-    "dogru": "Hassasiyet"
-  },
-  {
-    "id": 46,
-    "soru": "Hiperkalemide geç dönemde görülen EKG bulgusu hangisidir?",
-    "secenekler": ["Sivri T", "PR uzaması", "QRS genişlemesi", "QT kısalması"],
-    "dogru": "QRS genişlemesi"
-  },
-  {
-    "id": 47,
-    "soru": "Akut pankreatitte erken mortalitenin en sık nedeni nedir?",
-    "secenekler": ["Psödokist", "Hipokalsemi", "ARDS", "Apse"],
-    "dogru": "ARDS"
-  },
-  {
-    "id": 48,
-    "soru": "Hiperkalseminin en sık nedeni nedir?",
-    "secenekler": ["Malignite", "Primer hiperparatiroidi", "Sarkoidoz", "D vitamini fazlalığı"],
-    "dogru": "Primer hiperparatiroidi"
-  },
-  {
-    "id": 49,
-    "soru": "Akut masif pulmoner embolide en sık ölüm nedeni nedir?",
-    "secenekler": ["Hipoksemi", "Sağ ventrikül yetmezliği", "ARDS", "Tamponad"],
-    "dogru": "Sağ ventrikül yetmezliği"
-  },
-  {
-    "id": 50,
-    "soru": "Hiponatremide serum osmolalitesi normal ise en olası neden nedir?",
-    "secenekler": ["SIADH", "Psödohiponatremi", "Adrenal yetmezlik", "Hiperglisemi"],
-    "dogru": "Psödohiponatremi"
-  },
-  {
-    "id": 51,
-    "soru": "Mezenter iskemi için en duyarlı görüntüleme yöntemi hangisidir?",
-    "secenekler": ["Direkt grafi", "BT anjiyografi", "USG", "MRCP"],
-    "dogru": "BT anjiyografi"
-  },
-  {
-    "id": 52,
-    "soru": "Hepatit B enfeksiyonunda kronikleşme en sık hangi yaş grubunda görülür?",
-    "secenekler": ["Erişkin", "Adolesan", "Yenidoğan", "Yaşlı"],
-    "dogru": "Yenidoğan"
-  },
-  {
-    "id": 53,
-    "soru": "Romatoid artritte en sık görülen sistemik komplikasyon hangisidir?",
-    "secenekler": ["Perikardit", "Vaskülit", "Anemi", "Plevral efüzyon"],
-    "dogru": "Anemi"
-  },
-  {
-    "id": 54,
-    "soru": "Hiperkalsemide en sık görülen semptom hangisidir?",
-    "secenekler": ["Tetani", "Kabızlık", "Nöbet", "Parestezi"],
-    "dogru": "Kabızlık"
-  },
-  {
-    "id": 55,
-    "soru": "Akut aort diseksiyonunda en tipik fizik muayene bulgusu nedir?",
-    "secenekler": ["Üfürüm", "Nabız asimetrisi", "S3", "Hipotermi"],
-    "dogru": "Nabız asimetrisi"
-  },
-  {
-    "id": 56,
-    "soru": "Diyabetik ketoasidozda en belirgin asit-baz bozukluğu hangisidir?",
-    "secenekler": ["Metabolik alkaloz", "Respiratuvar alkaloz", "Metabolik asidoz", "Respiratuvar asidoz"],
+    "soru": "Primer hiperaldosteronizm (Conn Sendromu) olan bir hastada hangisi beklenmez?",
+    "secenekler": ["Hipertansiyon", "Hipokalemi", "Metabolik asidoz", "Düşük plazma renin aktivitesi"],
     "dogru": "Metabolik asidoz"
   },
   {
+    "id": 27,
+    "soru": "Feokromositoma cerrahisinden önce hastaya ilk başlanması gereken ilaç grubu hangisidir?",
+    "secenekler": ["Beta bloker", "Alfa bloker", "Kalsiyum kanal blokeri", "ACE inhibitörü"],
+    "dogru": "Alfa bloker"
+  },
+  {
+    "id": 28,
+    "soru": "Multiple Myeloma tanılı bir hastada periferik yaymada eritrositlerin üst üste dizilmesiyle oluşan görünüme ne ad verilir?",
+    "secenekler": ["Şistosit", "Target hücresi", "Rulo (Rouleaux) formasyonu", "Heinz gövdesi"],
+    "dogru": "Rulo (Rouleaux) formasyonu"
+  },
+  {
+    "id": 29,
+    "soru": "Hodgkin lenfoma için patognomonik olan 'baykuş gözü' görünümlü hücre hangisidir?",
+    "secenekler": ["Reed-Sternberg hücresi", "Langerhans hücresi", "Auer cisimciği", "Pelger-Huet hücresi"],
+    "dogru": "Reed-Sternberg hücresi"
+  },
+  {
+    "id": 30,
+    "soru": "Çölyak hastalığı taramasında kullanılan en duyarlı ve spesifik antikor hangisidir?",
+    "secenekler": ["Anti-gliadin", "Anti-endomisyum (EMA) IgA", "Anti-nükleer antikor (ANA)", "Anti-CCP"],
+    "dogru": "Anti-endomisyum (EMA) IgA"
+  },
+  {
+    "id": 31,
+    "soru": "Akalazyada baryumlu özofagus grafisinde görülen tipik radyolojik bulgu nedir?",
+    "secenekler": ["Tirbuşon özofagus", "Kuş gagası (Bird's beak)", "Apple core", "Kum saati"],
+    "dogru": "Kuş gagası (Bird's beak)"
+  },
+  {
+    "id": 32,
+    "soru": "Yaşlı hastada ağız kokusu (halitosis) ve regürjitasyon ile karakterize özofagus divertikülü hangisidir?",
+    "secenekler": ["Traction divertikülü", "Zenker divertikülü", "Epifrenik divertikül", "Meckel divertikülü"],
+    "dogru": "Zenker divertikülü"
+  },
+  {
+    "id": 33,
+    "soru": "Şiddetli kusma sonrası özofagusun tüm katmanlarının yırtılması ile karakterize tablo nedir?",
+    "secenekler": ["Mallory-Weiss sendromu", "Boerhaave sendromu", "Barrett özofagus", "Plummer-Vinson"],
+    "dogru": "Boerhaave sendromu"
+  },
+  {
+    "id": 34,
+    "soru": "Alkolik bir hastada şiddetli kusma sonrası gelişen, sadece mukoza ve submukoza ile sınırlı kanamalı yırtık hangisidir?",
+    "secenekler": ["Mallory-Weiss sendromu", "Boerhaave sendromu", "Dieulafoy lezyonu", "Varis kanaması"],
+    "dogru": "Mallory-Weiss sendromu"
+  },
+  {
+    "id": 35,
+    "soru": "Hepatik venlerin trombozu sonucu gelişen, hepatomegali ve asit ile seyreden tabloya ne ad verilir?",
+    "secenekler": ["Budd-Chiari sendromu", "Gilbert sendromu", "Crigler-Najjar", "Wilson hastalığı"],
+    "dogru": "Budd-Chiari sendromu"
+  },
+  {
+    "id": 36,
+    "soru": "Hemokromatozis hastalığında klasik triad hangisidir?",
+    "secenekler": ["Siroz, diyabet, bronz deri", "Siroz, anemi, splenomegali", "Sarılık, ateş, ağrı", "Hipotansiyon, taşikardi, dispne"],
+    "dogru": "Siroz, diyabet, bronz deri"
+  },
+  {
+    "id": 37,
+    "soru": "Genç yaşta amfizem ve karaciğer sirozu saptanan hastada en olası genetik eksiklik hangisidir?",
+    "secenekler": ["G6PD eksikliği", "Alfa-1 antitripsin eksikliği", "Vitamin C eksikliği", "Faktör V Leiden"],
+    "dogru": "Alfa-1 antitripsin eksikliği"
+  },
+  {
+    "id": 38,
+    "soru": "G6PD eksikliğinde periferik yaymada görülen denatüre hemoglobin inklüzyonlarına ne ad verilir?",
+    "secenekler": ["Howell-Jolly cisimcikleri", "Heinz gövdeleri", "Pappenheimer cisimcikleri", "Cabot halkaları"],
+    "dogru": "Heinz gövdeleri"
+  },
+  {
+    "id": 39,
+    "soru": "Herediter sferositoz tanısında kullanılan en önemli tanısal test hangisidir?",
+    "secenekler": ["Direkt Coombs", "Osmotik frajilite testi", "Hemoglobin elektroforezi", "Demir bağlama kapasitesi"],
+    "dogru": "Osmotik frajilite testi"
+  },
+  {
+    "id": 40,
+    "soru": "Paroksismal Noktürnal Hemoglobinüri (PNH) tanısında eksikliği saptanan proteinler hangileridir?",
+    "secenekler": ["CD4/CD8", "CD55/CD59", "CD19/CD20", "CD3/CD4"],
+    "dogru": "CD55/CD59"
+  },
+  {
+    "id": 41,
+    "soru": "Çocuklarda en sık görülen nefrotik sendrom nedeni hangisidir?",
+    "secenekler": ["Membranöz GN", "Minimal değişim hastalığı", "FSGS", "Amiloidoz"],
+    "dogru": "Minimal değişim hastalığı"
+  },
+  {
+    "id": 42,
+    "soru": "Post-streptokokal GN'de serumda düzeyi düşük saptanan kompleman komponenti hangisidir?",
+    "secenekler": ["C1", "C3", "C4", "C2"],
+    "dogru": "C3"
+  },
+  {
+    "id": 43,
+    "soru": "Dünyada en sık görülen primer glomerülonefrit hangisidir?",
+    "secenekler": ["IgA Nefropatisi (Berger)", "Membranoproliferatif GN", "Hızlı ilerleyen GN", "Minimal değişim"],
+    "dogru": "IgA Nefropatisi (Berger)"
+  },
+  {
+    "id": 44,
+    "soru": "Herediter nefrit, sensörinöral işitme kaybı ve oküler defektlerle seyreden sendrom hangisidir?",
+    "secenekler": ["Alport sendromu", "Bartter sendromu", "Gitelman sendromu", "Fanconi sendromu"],
+    "dogru": "Alport sendromu"
+  },
+  {
+    "id": 45,
+    "soru": "Hemoptizi ve hematüri (akciğer-böbrek sendromu) ile başvuran hastada anti-GBM antikorları pozitif saptanıyor. Tanı nedir?",
+    "secenekler": ["Wegener", "Goodpasture sendromu", "Churg-Strauss", "SLE"],
+    "dogru": "Goodpasture sendromu"
+  },
+  {
+    "id": 46,
+    "soru": "Granülomatöz Polianjitis (Wegener) tanısında en spesifik antikor hangisidir?",
+    "secenekler": ["p-ANCA", "c-ANCA (PR3-ANCA)", "ANA", "Anti-dsDNA"],
+    "dogru": "c-ANCA (PR3-ANCA)"
+  },
+  {
+    "id": 47,
+    "soru": "Mikroskopik polianjitis tanısında en sık hangi antikor pozitifliği görülür?",
+    "secenekler": ["c-ANCA", "p-ANCA (MPO-ANCA)", "Anti-Jo1", "Anti-Scl70"],
+    "dogru": "p-ANCA (MPO-ANCA)"
+  },
+  {
+    "id": 48,
+    "soru": "Yaşlı bir hastada tek taraflı şiddetli baş ağrısı, çene kladikasyosu ve görme kaybı mevcut. İlk düşünülmesi gereken tanı nedir?",
+    "secenekler": ["Migren", "Temporal arterit (Dev hücreli)", "Takayasu arteriti", "Küme baş ağrısı"],
+    "dogru": "Temporal arterit (Dev hücreli)"
+  },
+  {
+    "id": 49,
+    "soru": "Genç Asyalı kadınlarda görülen, aort arkı ve dallarını tutan, nabızsızlık hastalığı olarak bilinen vaskülit hangisidir?",
+    "secenekler": ["Behçet", "Takayasu arteriti", "Buerger hastalığı", "PAN"],
+    "dogru": "Takayasu arteriti"
+  },
+  {
+    "id": 50,
+    "soru": "Kawasaki hastalığının en korkulan ve mortaliteye neden olan komplikasyonu nedir?",
+    "secenekler": ["Çilek dili", "Koroner arter anevrizması", "Artrit", "Üveit"],
+    "dogru": "Koroner arter anevrizması"
+  },
+  {
+    "id": 51,
+    "soru": "Poliarteritis Nodosa (PAN) vasküliti en sık hangi viral enfeksiyonla ilişkilidir?",
+    "secenekler": ["HCV", "HBV", "HIV", "EBV"],
+    "dogru": "HBV"
+  },
+  {
+    "id": 52,
+    "soru": "Çocuklarda en sık görülen sistemik vaskülit hangisidir?",
+    "secenekler": ["Kawasaki", "Henoch-Schönlein Purpurası (IgA vasküliti)", "Takayasu", "Wegener"],
+    "dogru": "Henoch-Schönlein Purpurası (IgA vasküliti)"
+  },
+  {
+    "id": 53,
+    "soru": "Osteoartritte distal interfalangeal eklemlerde görülen nodüllere ne ad verilir?",
+    "secenekler": ["Bouchard nodülleri", "Heberden nodülleri", "Romatoid nodüller", "Osler nodülleri"],
+    "dogru": "Heberden nodülleri"
+  },
+  {
+    "id": 54,
+    "soru": "Gut hastalığında eklem sıvısında görülen kristallerin özelliği nedir?",
+    "secenekler": ["Pozitif çift kırılımlı rombik", "Negatif çift kırılımlı iğne şeklinde", "Kalsiyum oksalat", "Kolesterol kristali"],
+    "dogru": "Negatif çift kırılımlı iğne şeklinde"
+  },
+  {
+    "id": 55,
+    "soru": "Yalancı gut (Psödogut) hastalığında biriken kristal türü hangisidir?",
+    "secenekler": ["Monosodyum ürat", "Kalsiyum pirofosfat", "Magnezyum amonyum fosfat", "Sistin"],
+    "dogru": "Kalsiyum pirofosfat"
+  },
+  {
+    "id": 56,
+    "soru": "Dermatomiyozitte eklemlerin üzerinde görülen morumsu papüllere ne ad verilir?",
+    "secenekler": ["Heliotrop döküntü", "Gottron papülleri", "Livedo reticularis", "Eritema marginatum"],
+    "dogru": "Gottron papülleri"
+  },
+  {
     "id": 57,
-    "soru": "Akut kolanjitte en önemli Charcot triadı bulgularından biri hangisidir?",
-    "secenekler": ["Sarılık", "Hematemez", "Melena", "Konstipasyon"],
-    "dogru": "Sarılık"
+    "soru": "Sınırlı (Limited) sklerodermada (CREST sendromu) en spesifik antikor hangisidir?",
+    "secenekler": ["Anti-Scl70", "Anti-sentromer antikor", "Anti-Jo1", "Anti-RNP"],
+    "dogru": "Anti-sentromer antikor"
   },
   {
     "id": 58,
-    "soru": "Hipokalemide kas güçsüzlüğünün temel nedeni nedir?",
-    "secenekler": ["Hiperpolarizasyon", "Depolarizasyon", "Kalsiyum artışı", "Sodyum artışı"],
-    "dogru": "Hiperpolarizasyon"
+    "soru": "Sjögren sendromu tanısında en spesifik antikorlar hangileridir?",
+    "secenekler": ["Anti-Ro (SSA) ve Anti-La (SSB)", "Anti-dsDNA", "Anti-histon", "RF"],
+    "dogru": "Anti-Ro (SSA) ve Anti-La (SSB)"
   },
   {
     "id": 59,
-    "soru": "Akut MI sonrası en sık görülen erken aritmi hangisidir?",
-    "secenekler": ["AF", "VT", "Ventriküler fibrilasyon", "AV blok"],
-    "dogru": "Ventriküler fibrilasyon"
+    "soru": "Myasthenia Gravis tanısında kullanılan kısa etkili antikolinesteraz ilacı hangisidir?",
+    "secenekler": ["Piridostigmin", "Edrofonyum (Tensilon)", "Neostigmin", "Atropin"],
+    "dogru": "Edrofonyum (Tensilon)"
   },
   {
     "id": 60,
-    "soru": "Hiponatremide nörolojik semptomların temel nedeni nedir?",
-    "secenekler": ["Serebral ödem", "Hiperkalemi", "Hipoglisemi", "Alkaloz"],
-    "dogru": "Serebral ödem"
+    "soru": "Lambert-Eaton sendromunda hangi kanallara karşı antikor gelişir?",
+    "secenekler": ["Asetilkolin reseptörü", "Voltaj bağımlı kalsiyum kanalları", "Sodyum kanalları", "Potasyum kanalları"],
+    "dogru": "Voltaj bağımlı kalsiyum kanalları"
   },
   {
     "id": 61,
-    "soru": "Akut perikardit ağrısı hangi pozisyonda azalır?",
-    "secenekler": ["Sırtüstü", "Sol yan", "Öne eğilince", "Ayakta"],
-    "dogru": "Öne eğilince"
+    "soru": "Multiple Skleroz (MS) tanısında BOS incelemesinde saptanan en tipik bulgu nedir?",
+    "secenekler": ["Lökositoz", "Oligoklonal bantlar", "Düşük glukoz", "Yüksek LDH"],
+    "dogru": "Oligoklonal bantlar"
   },
   {
     "id": 62,
-    "soru": "Hiperkalemi tedavisinde membran stabilizasyonu için verilen ilaç hangisidir?",
-    "secenekler": ["İnsülin", "Kalsiyum glukonat", "Sodyum bikarbonat", "Furosemid"],
-    "dogru": "Kalsiyum glukonat"
+    "soru": "Guillain-Barré sendromunda BOS incelemesinde saptanan klasik bulguya ne ad verilir?",
+    "secenekler": ["Ksantokromi", "Albüminositolojik dissosiasyon", "Pleositoz", "Hücresel artış"],
+    "dogru": "Albüminositolojik dissosiasyon"
   },
   {
     "id": 63,
-    "soru": "Akut böbrek hasarında postrenal neden için en tipik bulgu nedir?",
-    "secenekler": ["FeNa <1%", "Hidronefroz", "Granüler silendir", "Proteinüri"],
-    "dogru": "Hidronefroz"
+    "soru": "Parkinson hastalığında beyinde saptanan tipik sitoplazmik inklüzyonlar hangisidir?",
+    "secenekler": ["Negri cisimcikleri", "Lewy gövdeleri", "Hirano cisimcikleri", "Pick gövdeleri"],
+    "dogru": "Lewy gövdeleri"
   },
   {
     "id": 64,
-    "soru": "Hipertiroidide en sık görülen nörolojik bulgu hangisidir?",
-    "secenekler": ["Bradikinezi", "Tremor", "Parezi", "Refleks kaybı"],
-    "dogru": "Tremor"
+    "soru": "Alzheimer hastalığında görülen ekstrasellüler birikim hangisidir?",
+    "secenekler": ["Tau proteini", "Amiloid beta plakları", "Alfa-sinüklein", "Prion"],
+    "dogru": "Amiloid beta plakları"
   },
   {
     "id": 65,
-    "soru": "Akut iskemik inmede ilk 4.5 saat içinde uygulanabilecek tedavi hangisidir?",
-    "secenekler": ["Heparin", "tPA", "Aspirin", "Kortikosteroid"],
-    "dogru": "tPA"
+    "soru": "Huntington koresinde en belirgin atrofiye uğrayan beyin bölgesi hangisidir?",
+    "secenekler": ["Hipokampus", "Nükleus kaudatus", "Substansiya nigra", "Serebellum"],
+    "dogru": "Nükleus kaudatus"
   },
   {
     "id": 66,
-    "soru": "Hiponatremide idrar osmolalitesi düşük ise en olası neden nedir?",
-    "secenekler": ["SIADH", "Psikojenik polidipsi", "Adrenal yetmezlik", "Hipotiroidi"],
-    "dogru": "Psikojenik polidipsi"
-},
-{
-    "id": 66,
-    "soru": "Hiponatremisi olan hastada serum osmolalitesi normal saptanıyor. En olası neden nedir?",
-    "secenekler": ["SIADH", "Hiperglisemi", "Psödohiponatremi", "Adrenal yetmezlik"],
-    "dogru": "Psödohiponatremi"
+    "soru": "Wilson hastalığında serumda hangi proteinin düzeyi düşük saptanır?",
+    "secenekler": ["Ferritin", "Seruloplazmin", "Haptoglobin", "Albümin"],
+    "dogru": "Seruloplazmin"
   },
   {
     "id": 67,
-    "soru": "Akut masif pulmoner embolide en sık ölüm nedeni nedir?",
-    "secenekler": ["Hipoksemi", "Sağ ventrikül yetmezliği", "ARDS", "Kardiyak tamponad"],
-    "dogru": "Sağ ventrikül yetmezliği"
+    "soru": "Graves hastalığında hipertiroidiye neden olan antikor hangisidir?",
+    "secenekler": ["Anti-TPO", "TSH reseptör antikoru (TSI)", "Anti-tiroglobulin", "Anti-mikrozomal"],
+    "dogru": "TSH reseptör antikoru (TSI)"
   },
   {
     "id": 68,
-    "soru": "Hiperkalemide EKG'de ilk görülen değişiklik hangisidir?",
-    "secenekler": ["PR uzaması", "Sivri T dalgası", "QRS genişlemesi", "P dalgası kaybı"],
-    "dogru": "Sivri T dalgası"
+    "soru": "Hashimoto tiroiditinde en sık saptanan antikor hangisidir?",
+    "secenekler": ["Anti-TPO", "Anti-nükleer antikor", "TSH reseptör blokör antikoru", "TRAB"],
+    "dogru": "Anti-TPO"
   },
   {
     "id": 69,
-    "soru": "Primer biliyer kolanjitte en tipik laboratuvar bulgusu hangisidir?",
-    "secenekler": ["AST yüksekliği", "ALT yüksekliği", "ALP yüksekliği", "Bilirubin düşüklüğü"],
-    "dogru": "ALP yüksekliği"
+    "soru": "Üst solunum yolu enfeksiyonu sonrası gelişen ağrılı tiroid bezi büyümesi ve yüksek ESR ile karakterize tanı nedir?",
+    "secenekler": ["Riedel tiroiditi", "Subakut granülomatöz tiroidit (De Quervain)", "Sessiz tiroidit", "Graves"],
+    "dogru": "Subakut granülomatöz tiroidit (De Quervain)"
   },
   {
     "id": 70,
-    "soru": "Hipoglisemide Whipple triadının bir parçası olmayan hangisidir?",
-    "secenekler": ["Semptom varlığı", "Düşük plazma glukozu", "Glukoz verilince düzelme", "İnsülin yüksekliği"],
-    "dogru": "İnsülin yüksekliği"
+    "soru": "Tiroid bezinin taş gibi sert olduğu ve çevre dokulara fikse olduğu tiroidit tipi hangisidir?",
+    "secenekler": ["Hashimoto", "Riedel tiroiditi", "De Quervain", "Akut süpüratif tiroidit"],
+    "dogru": "Riedel tiroiditi"
   },
   {
     "id": 71,
-    "soru": "Akut tübüler nekrozda idrarda en tipik silendir hangisidir?",
-    "secenekler": ["Eritrosit silendiri", "Lökosit silendiri", "Granüler (muddy brown) silendir", "Hiyalin silendir"],
-    "dogru": "Granüler (muddy brown) silendir"
+    "soru": "Akromegali şüphesi olan hastada en uygun tarama testi hangisidir?",
+    "secenekler": ["Bazal büyüme hormonu", "IGF-1 düzeyi", "Oral glukoz tolerans testi", "Kortizol"],
+    "dogru": "IGF-1 düzeyi"
   },
   {
     "id": 72,
-    "soru": "Feokromositomada en spesifik tanısal test hangisidir?",
-    "secenekler": ["Plazma kortizol", "24 saatlik idrarda metanefrin", "Serum aldosteron", "TSH"],
-    "dogru": "24 saatlik idrarda metanefrin"
+    "soru": "Prolaktinoma tedavisinde ilk tercih edilen ilaç grubu hangisidir?",
+    "secenekler": ["Somatostatin analogları", "Dopamin agonistleri (Kabergolin)", "Östrojen", "Kortikosteroid"],
+    "dogru": "Dopamin agonistleri (Kabergolin)"
   },
   {
     "id": 73,
-    "soru": "Akut romatoid artritte en sık görülen sistemik komplikasyon hangisidir?",
-    "secenekler": ["Perikardit", "Plevral efüzyon", "Vaskülit", "Anemi"],
-    "dogru": "Anemi"
+    "soru": "Santral Diabetes Insipidus tanısını Nefrojenik olandan ayıran test yanıtı nedir?",
+    "secenekler": ["Su kısıtlamasına yanıt", "Desmopressine (ADH) yanıt", "İnsüline yanıt", "Tuz kısıtlamasına yanıt"],
+    "dogru": "Desmopressine (ADH) yanıt"
   },
   {
     "id": 74,
-    "soru": "En sık görülen malign primer beyin tümörü hangisidir?",
-    "secenekler": ["Glioblastoma", "Meningiom", "Medulloblastom", "Astrositom"],
-    "dogru": " Glioblastoma"
+    "soru": "SIADH tablosunda serum ve idrar osmolalitesi nasıldır?",
+    "secenekler": ["Düşük serum osmolalitesi / Yüksek idrar osmolalitesi", "Yüksek serum osmolalitesi / Düşük idrar osmolalitesi", "Her ikisi de düşük", "Her ikisi de yüksek"],
+    "dogru": "Düşük serum osmolalitesi / Yüksek idrar osmolalitesi"
   },
   {
     "id": 75,
-    "soru": "Hipertiroidide en sık görülen kemik komplikasyonu nedir?",
-    "secenekler": ["Osteomalazi", "Osteoporoz", "Paget hastalığı", "Kemik metastazı"],
-    "dogru": "Osteoporoz"
+    "soru": "D vitamini eksikliğinin çocuklardaki klinik tablosuna ne ad verilir?",
+    "secenekler": ["Osteomalazi", "Raşitizm (Rickets)", "Osteoporoz", "Paget"],
+    "dogru": "Raşitizm (Rickets)"
   },
   {
     "id": 76,
-    "soru": "Akut bakteriyel menenjitte BOS'ta tipik glukoz düzeyi nasıldır?",
-    "secenekler": ["Normal", "Yüksek", "Düşük", "Dalgalı"],
-    "dogru": "Düşük"
+    "soru": "C vitamini eksikliğine bağlı gelişen kanamalı diş etleri ve perifollicüler hemoraji ile seyreden hastalık nedir?",
+    "secenekler": ["Pellagra", "Skorbüt (Scurvy)", "Beriberi", "Kvaşiorkor"],
+    "dogru": "Skorbüt (Scurvy)"
   },
   {
     "id": 77,
-    "soru": "Hipokalemide EKG'de en tipik bulgu hangisidir?",
-    "secenekler": ["Sivri T", "U dalgası", "QT kısalması", "ST elevasyonu"],
-    "dogru": "U dalgası"
+    "soru": "Niasin (B3) eksikliğinde görülen 3D bulgusu (Dermatit, Diyare, Demans) hangi hastalığı tanımlar?",
+    "secenekler": ["Pellagra", "Beriberi", "Raşitizm", "Anemi"],
+    "dogru": "Pellagra"
   },
   {
     "id": 78,
-    "soru": "Akut kalp yetmezliğinde BNP artışının temel nedeni nedir?",
-    "secenekler": ["Hipoksi", "Ventrikül duvar gerilimi", "Taşikardi", "Hipertansiyon"],
-    "dogru": "Ventrikül duvar gerilimi"
+    "soru": "Tiamin (B1) eksikliğine bağlı gelişen kalp yetmezliği tablosuna ne ad verilir?",
+    "secenekler": ["Kuru beriberi", "Yaş beriberi", "Wernicke-Korsakoff", "Kvaşiorkor"],
+    "dogru": "Yaş beriberi"
   },
   {
     "id": 79,
-    "soru": "En sık görülen primer beyin tümörü hangisidir?",
-    "secenekler": ["Glioblastoma", "Meningiom", "Medulloblastom", "Astrositom"],
-    "dogru": "Meningiom"
+    "soru": "Pernisiyöz anemide hangi faktöre karşı antikor gelişir?",
+    "secenekler": ["Transferrin", "İntrinsik faktör", "Folat", "Gastroferrin"],
+    "dogru": "İntrinsik faktör"
   },
   {
     "id": 80,
-    "soru": "Addison krizinde ilk tedavi yaklaşımı nedir?",
-    "secenekler": ["İnsülin", "Hidrokortizon", "Tiroksin", "Beta bloker"],
-    "dogru": "Hidrokortizon"
+    "soru": "Primer Biliyer Kolanjit (PBK) tanısında en spesifik antikor hangisidir?",
+    "secenekler": ["ASMA", "AMA (Anti-mitokondriyal)", "LKM-1", "SLA"],
+    "dogru": "AMA (Anti-mitokondriyal)"
   },
   {
     "id": 81,
-    "soru": "Akut peritonitte en erken fizik muayene bulgusu nedir?",
-    "secenekler": ["Rijidite", "Rebound", "Tahta karın", "Hassasiyet"],
-    "dogru": "Hassasiyet"
+    "soru": "Primer Sklerozan Kolanjit (PSK) en sık hangi inflamatuvar bağırsak hastalığı ile birliktelik gösterir?",
+    "secenekler": ["Crohn", "Ülseratif Kolit", "Çölyak", "Whipple"],
+    "dogru": "Ülseratif Kolit"
   },
   {
     "id": 82,
-    "soru": "Demir eksikliği anemisinde en geç düzelen parametre hangisidir?",
-    "secenekler": ["Retikülosit", "Hb", "Ferritin", "MCV"],
-    "dogru": "Ferritin"
+    "soru": "Akut kolesistit tanısında fizik muayenede saptanan en spesifik bulgu hangisidir?",
+    "secenekler": ["McBurney", "Murphy belirtisi", "Courvoisier belirtisi", "Cullen belirtisi"],
+    "dogru": "Murphy belirtisi"
   },
   {
     "id": 83,
-    "soru": "Hiperkalsemiye bağlı en sık EKG değişikliği hangisidir?",
-    "secenekler": ["QT uzaması", "QT kısalması", "PR uzaması", "ST depresyonu"],
-    "dogru": "QT kısalması"
+    "soru": "Akut kolanjitte görülen Reynolds pentadında Charcot triadına eklenen iki bulgu hangisidir?",
+    "secenekler": ["Taşikardi ve kusma", "Hipotansiyon ve bilinç değişikliği", "Asit ve ödem", "Hemoptizi ve anüri"],
+    "dogru": "Hipotansiyon ve bilinç değişikliği"
   },
   {
     "id": 84,
-    "soru": "Cushing sendromunda en sık görülen neden nedir?",
-    "secenekler": ["Adrenal adenom", "Hipofiz adenomu", "Ektopik ACTH", "Steroid kullanımı"],
-    "dogru": "Steroid kullanımı"
+    "soru": "Sigmoid volvulusta direkt karın grafisinde görülen tipik bulgu nedir?",
+    "secenekler": ["Hava-sıvı seviyesi", "Kahve çekirdeği (Coffee bean)", "Rovsing", "Frenik hava"],
+    "dogru": "Kahve çekirdeği (Coffee bean)"
   },
   {
     "id": 85,
-    "soru": "Akut hemolitik transfüzyon reaksiyonunun en erken bulgusu nedir?",
-    "secenekler": ["Sarılık", "Hemoglobinüri", "Ateş ve bel ağrısı", "Böbrek yetmezliği"],
-    "dogru": " Ateş ve bel ağrısı"
+    "soru": "Hirschsprung hastalığında temel patoloji nedir?",
+    "secenekler": ["Auerbach ve Meissner pleksusunda ganglion yokluğu", "Bağırsak iskemisi", "Gluten intoleransı", "Mukoza perforasyonu"],
+    "dogru": "Auerbach ve Meissner pleksusunda ganglion yokluğu"
   },
   {
     "id": 86,
-    "soru": "60 yaş erkek hastada ani başlayan şiddetli karın ağrısı mevcut. Fizik muayene bulguları minimal ancak laktat yüksek saptanıyor. En olası tanı nedir?",
-    "secenekler": ["Akut pankreatit", "Mezenter iskemi", "Perfore ülser", "İleus"],
-    "dogru": "Mezenter iskemi"
+    "soru": "Meckel divertikülü için geçerli olan '2'ler kuralı'nda yer almayan hangisidir?",
+    "secenekler": ["Nüfusun %2'sinde görülür", "2 yaş civarı semptom verir", "2 metre uzunluğundadır", "2 tip ektopik doku (gastrik/pankreatik) içerebilir"],
+    "dogru": "2 metre uzunluğundadır"
   },
   {
     "id": 87,
-    "soru": "Genç kadında tekrarlayan düşük öyküsü ve aPTT uzaması mevcut. En olası tanı nedir?",
-    "secenekler": ["Faktör VIII eksikliği", "Antifosfolipid sendromu", "Von Willebrand hastalığı", "Protein C eksikliği"],
-    "dogru": "Antifosfolipid sendromu"
+    "soru": "Crohn hastalığında patolojide saptanan, kazeifiye olmayan yapıya ne denir?",
+    "secenekler": ["Kazeifiye granülom", "Non-kazeifiye granülom", "Kript absesi", "Psödopolip"],
+    "dogru": "Non-kazeifiye granülom"
   },
   {
     "id": 88,
-    "soru": "Acil servise bilinç bulanıklığı ile getirilen hastada Na: 118 mEq/L saptanıyor. Nöbet geçirmektedir. İlk tedavi yaklaşımı nedir?",
-    "secenekler": ["Sıvı kısıtlaması", "%3 hipertonik salin", "Furosemid", "Desmopressin"],
-    "dogru": "%3 hipertonik salin"
+    "soru": "Ülseratif kolitte görülen ve mukoza adacıklarından oluşan yapılara ne ad verilir?",
+    "secenekler": ["Gerçek polip", "Psödopolip", "Skip lezyon", "Striktur"],
+    "dogru": "Psödopolip"
   },
   {
     "id": 89,
-    "soru": "Ateş, yeni üfürüm ve pozitif kan kültürü olan hastada Duke kriterlerine göre en önemli majör kriter hangisidir?",
-    "secenekler": ["Ateş", "Vasküler fenomen", "Pozitif kan kültürü", "Romatoid faktör"],
-    "dogru": "Pozitif kan kültürü"
+    "soru": "Çocukta 'çilek jölesi' şeklinde dışkılama hangi tabloyu düşündürür?",
+    "secenekler": ["Anal fissür", "İnvajinasyon", "Gastroenterit", "Divertikülit"],
+    "dogru": "İnvajinasyon"
   },
   {
     "id": 90,
-    "soru": "Uzun süreli diyabeti olan hastada ani görme kaybı gelişiyor. Fundoskopide neovaskülarizasyon mevcut. En olası mekanizma nedir?",
-    "secenekler": ["Mikroanevrizma", "Kapiller bazal membran kalınlaşması", "VEGF artışı", "Lens opasitesi"],
-    "dogru": "VEGF artışı"
+    "soru": "Ektopik gebelik şüphesinde tanı koydurucu en önemli kombinasyon hangisidir?",
+    "secenekler": ["BhCG yüksekliği ve Boş Uterus", "Yüksek ateş ve ağrı", "Lökositoz ve kusma", "Hipotansiyon ve asit"],
+    "dogru": "BhCG yüksekliği ve Boş Uterus"
   },
   {
     "id": 91,
-    "soru": "Acilde hipotansif, taşikardik ve juguler venöz dolgunluğu olan hastada kalp sesleri derinden geliyor. En olası tanı nedir?",
-    "secenekler": ["Pulmoner emboli", "Kardiyak tamponad", "Akut MI", "Aort diseksiyonu"],
-    "dogru": "Kardiyak tamponad"
+    "soru": "Gebelikte ağrısız vajinal kanamanın en olası nedeni nedir?",
+    "secenekler": ["Ablasyo plasenta", "Plasenta previa", "Uterus rüptürü", "Vasa previa"],
+    "dogru": "Plasenta previa"
   },
   {
     "id": 92,
-    "soru": "Genç erkekte üveit, oral aft ve genital ülser öyküsü mevcut. En olası tanı nedir?",
-    "secenekler": ["SLE", "Behçet hastalığı", "Reiter sendromu", "Crohn hastalığı"],
-    "dogru": "Behçet hastalığı"
+    "soru": "Gebelikte ağrılı vajinal kanama ve uterus sertliği (tahta karın) hangi tabloyu düşündürür?",
+    "secenekler": ["Plasenta previa", "Ablasyo plasenta (Dekolman)", "Mola gebelik", "Ektopik gebelik"],
+    "dogru": "Ablasyo plasenta (Dekolman)"
   },
   {
     "id": 93,
-    "soru": "Akut hemolitik anemide LDH artışının temel nedeni nedir?",
-    "secenekler": ["Karaciğer hasarı", "Eritrosit yıkımı", "Kas nekrozu", "Böbrek yetmezliği"],
-    "dogru": "Eritrosit yıkımı"
+    "soru": "Preeklampsi tanısı için gerekli olan klasik iki kriter hangisidir?",
+    "secenekler": ["Hipertansiyon ve Proteinüri", "Ödem ve Baş ağrısı", "Hipertansiyon ve Nöbet", "Bilirubin yüksekliği ve Kaşıntı"],
+    "dogru": "Hipertansiyon ve Proteinüri"
   },
   {
     "id": 94,
-    "soru": "Hipotiroidi tedavisi başlanan yaşlı hastada ani gelişen angina pektoris en sık hangi mekanizma ile açıklanır?",
-    "secenekler": ["Hipertansiyon", "Artmış metabolik hız", "Koroner vazospazm", "Hiperkalemi"],
-    "dogru": "Artmış metabolik hız"
+    "soru": "Preeklampsi tablosuna jeneralize tonik-klonik nöbetlerin eklenmesiyle oluşan tablo nedir?",
+    "secenekler": ["HELLP sendromu", "Eklampsi", "Gestasyonel hipertansiyon", "Serebral inme"],
+    "dogru": "Eklampsi"
   },
   {
     "id": 95,
-    "soru": "Ağrısız hematüri ile başvuran 65 yaş erkek hastada ilk düşünülmesi gereken tanı nedir?",
-    "secenekler": ["Glomerülonefrit", "BPH", "Mesane kanseri", "Üreter taşı"],
-    "dogru": "Mesane kanseri"
+    "soru": "Polikistik Over Sendromu'nda (PKOS) laboratuvarda hangi hormon oranı karakteristiktir?",
+    "secenekler": ["FSH/LH > 2", "LH/FSH > 2", "Östrojen düşüklüğü", "Progesteron yüksekliği"],
+    "dogru": "LH/FSH > 2"
   },
   {
     "id": 96,
-    "soru": "Acil serviste ani gelişen şiddetli baş ağrısı tarifleyen hastada BT normal saptanıyor. Şüphe devam ediyorsa bir sonraki adım nedir?",
-    "secenekler": ["MR anjiyografi", "Lomber ponksiyon", "EEG", "Karotis doppler"],
-    "dogru": "Lomber ponksiyon"
+    "soru": "Endometriozisli hastalarda görülen klasik triad (3D) hangisidir?",
+    "secenekler": ["Dismenore, Dispareuni, Diskezi", "Diyare, Dermatit, Demans", "Dispne, Diyafrez, Dizziness", "Diplopi, Disfaji, Disartri"],
+    "dogru": "Dismenore, Dispareuni, Diskezi"
   },
   {
     "id": 97,
-    "soru": "Hepatit C enfeksiyonunun en sık ekstrahepatik bulgusu hangisidir?",
-    "secenekler": ["Poliarteritis nodosa", "Kriyoglobulinemi", "SLE", "Skleroderma"],
-    "dogru": "Kriyoglobulinemi"
+    "soru": "Overde en sık görülen germ hücreli tümör hangisidir?",
+    "secenekler": ["Disgerminom", "Matür kistik teratom (Dermoid kist)", "Yolk sak tümörü", "Koryokarsinom"],
+    "dogru": "Matür kistik teratom (Dermoid kist)"
   },
   {
     "id": 98,
-    "soru": "Acil serviste dispne ve tek taraflı göğüs ağrısı olan genç uzun boylu erkekte akciğer grafisinde apikal hava saptanıyor. En olası tanı nedir?",
-    "secenekler": ["Pulmoner emboli", "Pnömoni", "Spontan pnömotoraks", "Astım"],
-    "dogru": "Spontan pnömotoraks"
+    "soru": "Çocuklarda en sık görülen böbrek tümörü hangisidir?",
+    "secenekler": ["Nefroblastom (Wilms tümörü)", "Nöroblastom", "RCC", "Mezoblastik nefroma"],
+    "dogru": "Nefroblastom (Wilms tümörü)"
   },
   {
     "id": 99,
-    "soru": "Hiponatremi hızlı düzeltilirse en ciddi komplikasyon hangisidir?",
-    "secenekler": ["Serebral ödem", "Osmotik demiyelinizasyon", "Epilepsi", "Hiperkalemi"],
-    "dogru": "Osmotik demiyelinizasyon"
+    "soru": "Nöroblastomun Wilms tümöründen en önemli klinik farkı nedir?",
+    "secenekler": ["Hipertansiyon yapması", "Orta hattı geçmesi", "Hematüri yapması", "Adrenal yerleşimli olması"],
+    "dogru": "Orta hattı geçmesi"
   },
   {
     "id": 100,
-    "soru": "Ateş, pansitopeni ve splenomegali olan hastada ferritin çok yüksek saptanıyor. En olası tanı nedir?",
-    "secenekler": ["Aplastik anemi", "HLH", "ALL", "Sepsis"],
-    "dogru": "HLH"
+    "soru": "Çocukluk çağında beyaz pupilla (Lökokori) ile başvuran hastada ilk akla gelmesi gereken göz tümörü nedir?",
+    "secenekler": ["Melanom", "Retinoblastom", "Katarakt", "Glokom"],
+    "dogru": "Retinoblastom"
+  },
+  {
+    "id": 101,
+    "soru": "Osteosarkomda direkt grafide görülen karakterize radyolojik bulgu hangisidir?",
+    "secenekler": ["Soğan zarı (Onion skin)", "Güneş ışını (Sunburst) ve Codman üçgeni", "Zımba deliği", "Sabun köpüğü"],
+    "dogru": "Güneş ışını (Sunburst) ve Codman üçgeni"
+  },
+  {
+    "id": 102,
+    "soru": "MEN 2B sendromunu MEN 2A'dan ayıran en tipik klinik özellik hangisidir?",
+    "secenekler": ["Medüller tiroid karsinomu", "Feokromositoma", "Mukozal nöromlar ve Marfanoid yapı", "Paratiroid adenomu"],
+    "dogru": "Mukozal nöromlar ve Marfanoid yapı"
+  },
+  {
+    "id": 103,
+    "soru": "Vitamin B12 eksikliğini folat eksikliğinden ayıran laboratuvar parametresi hangisidir?",
+    "secenekler": ["Yüksek homosistein", "Yüksek metilmalonik asit", "Makrositoz", "Nöropati varlığı"],
+    "dogru": "Yüksek metilmalonik asit"
+  },
+  {
+    "id": 104,
+    "soru": "Gitelman sendromunda, Bartter sendromundan farklı olarak idrarda hangi bulgu saptanır?",
+    "secenekler": ["Hiperkalsiüri", "Hipokalsiüri", "Metabolik asidoz", "Hiperkalemi"],
+    "dogru": "Hipokalsiüri"
+  },
+  {
+    "id": 105,
+    "soru": "İlaca bağlı gelişen Sistemik Lupus Eritematozus (SLE) tablosunda en spesifik antikor hangisidir?",
+    "secenekler": ["Anti-dsDNA", "Anti-Sm", "Anti-histon", "Anti-Ro"],
+    "dogru": "Anti-histon"
+  },
+  {
+    "id": 106,
+    "soru": "Primer hiperaldosteronizm (Conn Sendromu) tanısında plazma renin ve aldosteron düzeyleri nasıldır?",
+    "secenekler": ["Yüksek Renin - Yüksek Aldosteron", "Düşük Renin - Düşük Aldosteron", "Düşük Renin - Yüksek Aldosteron", "Yüksek Renin - Düşük Aldosteron"],
+    "dogru": "Düşük Renin - Yüksek Aldosteron"
+  },
+  {
+    "id": 107,
+    "soru": "Myasthenia Gravis tanısında kullanılan repetitif sinir stimülasyon testinde beklenen yanıt nedir?",
+    "secenekler": ["Dekremental (azalan) yanıt", "İnkremental (artan) yanıt", "Sabit yanıt", "Yanıt yok"],
+    "dogru": "Dekremental (azalan) yanıt"
+  },
+  {
+    "id": 108,
+    "soru": "Von Willebrand Hastalığı ile Hemofili A ayrımında hangi testin bozuk olması Von Willebrand lehinedir?",
+    "secenekler": ["aPTT uzaması", "PT uzaması", "Ristosetin kofaktör aktivitesi düşüklüğü", "Faktör VIII düşüklüğü"],
+    "dogru": "Ristosetin kofaktör aktivitesi düşüklüğü"
+  },
+  {
+    "id": 109,
+    "soru": "Sarkoidozda görülen hiperkalseminin temel mekanizması nedir?",
+    "secenekler": ["PTH artışı", "Kemik metastazı", "Makrofajlarda 1-alfa hidroksilaz aktivite artışı", "D vitamini eksikliği"],
+    "dogru": "Makrofajlarda 1-alfa hidroksilaz aktivite artışı"
+  },
+  {
+    "id": 110,
+    "soru": "Akut perikardit EKG'sinde ST elevasyonuna eşlik eden en spesifik bulgu hangisidir?",
+    "secenekler": ["Q dalgası", "PR segment depresyonu", "T dalga inversiyonu", "QT kısalması"],
+    "dogru": "PR segment depresyonu"
+  },
+  {
+    "id": 111,
+    "soru": "Lambert-Eaton Sendromu'nda repetitif sinir stimülasyonunda ne gözlenir?",
+    "secenekler": ["Dekremental yanıt", "İnkremental (artan) yanıt", "Yanıt alınamaz", "Fibrilasyon potansiyelleri"],
+    "dogru": "İnkremental (artan) yanıt"
+  },
+  {
+    "id": 112,
+    "soru": "Wilson hastalığında tanı koydurucu olan en tipik oftalmolojik bulgu hangisidir?",
+    "secenekler": ["Katarakt", "Kayser-Fleischer halkası", "Optik nörit", "Mavi sklera"],
+    "dogru": "Kayser-Fleischer halkası"
+  },
+  {
+    "id": 113,
+    "soru": "Polisitemia Vera tanısında en önemli majör kriter hangisidir?",
+    "secenekler": ["Düşük eritropoetin düzeyi", "JAK2 V617F mutasyonu", "Splenomegali", "Trombositoz"],
+    "dogru": "JAK2 V617F mutasyonu"
+  },
+  {
+    "id": 114,
+    "soru": "Erişkinlerde en sık görülen nefrotik sendrom nedeni hangisidir?",
+    "secenekler": ["Minimal değişim hastalığı", "Membranöz nefropati", "FSGS", "Amiloidoz"],
+    "dogru": "Membranöz nefropati"
+  },
+  {
+    "id": 115,
+    "soru": "Diabetes Insipidus tanısında santral ve nefrojenik ayrımı için kullanılan test hangisidir?",
+    "secenekler": ["Su kısıtlama testi", "Ekzojen ADH (Vazopressin) testi", "Glukoz tolerans testi", "İnsülin tolerans testi"],
+    "dogru": "Ekzojen ADH (Vazopressin) testi"
+  },
+  {
+    "id": 116,
+    "soru": "Akut sol kalp yetmezliğinde oskültasyonda duyulan ve ventrikül doluş fazında oluşan ses hangisidir?",
+    "secenekler": ["S1", "S2", "S3", "S4"],
+    "dogru": "S3"
+  },
+  {
+    "id": 117,
+    "soru": "Aşağıdaki vaskülitlerin hangisinde p-ANCA (anti-MPO) pozitifliği en sıktır?",
+    "secenekler": ["Wegener (Granülomatöz Polianjitis)", "Churg-Strauss Sendromu", "Dev hücreli arterit", "Behçet hastalığı"],
+    "dogru": "Churg-Strauss Sendromu"
+  },
+  {
+    "id": 118,
+    "soru": "Zollinger-Ellison Sendromu tanısında en güvenilir provokatif test hangisidir?",
+    "secenekler": ["Sekretin testi", "İnsülin testi", "Üre nefes testi", "Kalsiyum infüzyon testi"],
+    "dogru": "Sekretin testi"
+  },
+  {
+    "id": 119,
+    "soru": "Heparin kullanımına bağlı gelişen trombositopenide (HIT Tip 2) temel mekanizma nedir?",
+    "secenekler": ["Direkt toksik etki", "PF4-Heparin kompleksine karşı antikor gelişimi", "Kemik iliği supresyonu", "Dalak sekestrasyonu"],
+    "dogru": "PF4-Heparin kompleksine karşı antikor gelişimi"
+  },
+  {
+    "id": 120,
+    "soru": "Whipple hastalığında biyopsi örneğinde ne görülmesi karakteristiktir?",
+    "secenekler": ["Kazeifiye granülom", "PAS pozitif makrofajlar", "Villöz atrofi", "Kript abseleri"],
+    "dogru": "PAS pozitif makrofajlar"
+  },
+  {
+    "id": 121,
+    "soru": "Restriktif kardiyomiyopatiyi konstrüktif perikarditten ayıran en önemli laboratuvar bulgusu hangisidir?",
+    "secenekler": ["Düşük voltaj EKG", "BNP yüksekliği", "Perikardiyal kalınlaşma", "Kussmaul belirtisi"],
+    "dogru": "BNP yüksekliği"
   }
 ]
