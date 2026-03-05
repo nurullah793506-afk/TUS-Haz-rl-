@@ -20,7 +20,27 @@ USED_MESSAGES_FILE = "used_messages.json"
 PROGRESS_FILE = "progress.json"
 WRONG_FILE = "wrong_questions.json"
 # ==================================================
+# ===================== JSON YARDIMCILAR =====================
+def load_json(path, default):
+    if not os.path.exists(path):
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(default, f, ensure_ascii=False, indent=2)
+        return default
+    with open(path, "r", encoding="utf-8") as f:
+        return json.load(f)
 
+def save_json(path, data):
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
+# ==========================================================
+# ===================== VERİLER =====================
+questions = load_json(QUESTIONS_FILE, [])
+messages = load_json(MESSAGES_FILE, [])
+used_messages = load_json(USED_MESSAGES_FILE, [])
+progress = load_json(PROGRESS_FILE, {})
+wrong_questions = load_json(WRONG_FILE, [])
+questions = sorted(questions, key=lambda x: x["id"])
+# ==================================================
 
 # ===================== YANLIŞ SORULAR =====================
 st.write(f"📊 Toplam yanlış soru: {len(wrong_questions)}")
@@ -34,7 +54,11 @@ if st.button("📚 Yanlış Sorularımı Gör"):
 
         for q in questions:
             if q["id"] in wrong_questions:
-                st.write("•", q["soru"])
+                st.write("Soru:", q["soru"])
+                for idx, secenek in enumerate(q["secenekler"]):
+                    st.write(f"{chr(65+idx)}) {secenek}")
+                st.write("Doğru cevap:", q["dogru"])
+                st.markdown("---")
 
 # ==========================================================
 
@@ -57,28 +81,7 @@ else:
 current_period = f"{today}_{slot}"
 # ========================================================
 
-# ===================== JSON YARDIMCILAR =====================
-def load_json(path, default):
-    if not os.path.exists(path):
-        with open(path, "w", encoding="utf-8") as f:
-            json.dump(default, f, ensure_ascii=False, indent=2)
-        return default
-    with open(path, "r", encoding="utf-8") as f:
-        return json.load(f)
 
-def save_json(path, data):
-    with open(path, "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
-# ==========================================================
-
-# ===================== VERİLER =====================
-questions = load_json(QUESTIONS_FILE, [])
-messages = load_json(MESSAGES_FILE, [])
-used_messages = load_json(USED_MESSAGES_FILE, [])
-progress = load_json(PROGRESS_FILE, {})
-wrong_questions = load_json(WRONG_FILE, [])
-questions = sorted(questions, key=lambda x: x["id"])
-# ==================================================
 
 # ===================== PERIOD KONTROL =====================
 
@@ -116,7 +119,7 @@ if "show_message" in st.session_state and st.session_state.show_message:
 global_index = progress["global_index"]
 today_questions = questions[global_index:global_index + GUNLUK_SORU_SAYISI]
 q_index = st.session_state.q_index
-
+st.session_state.today_questions = questions[global_index:global_index + GUNLUK_SORU_SAYISI]
 if q_index >= len(today_questions):
     st.success("🎉 Bugünün tüm sorularını tamamladın!")
     st.stop()
