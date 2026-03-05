@@ -12,14 +12,30 @@ EVENING_TIME = time(20, 00)
 GUNLUK_SORU_SAYISI = 10
 
 QUESTIONS_FILE = "questions.json"
-ASKED_FILE = "asked_questions.json"
 MESSAGES_FILE = "messages.json"
 USED_MESSAGES_FILE = "used_messages.json"
 PROGRESS_FILE = "progress.json"
+WRONG_FILE = "wrong_questions.json"
 # ==================================================
 
 st.set_page_config(page_title="Günün Seçilmiş Soruları", page_icon="🌸")
 st.title("🌸 Günaydın Güzelliğim 💖")
+# ===================== YANLIŞ SORULAR =====================
+st.write(f"📊 Toplam yanlış soru: {len(wrong_questions)}")
+if st.button("📚 Yanlış Sorularımı Gör"):
+
+    if not wrong_questions:
+        st.info("Henüz yanlış yaptığın soru yok 🌸")
+
+    else:
+        st.subheader("Yanlış Yaptığın Sorular")
+
+        for q in questions:
+            if q["id"] in wrong_questions:
+                st.write("•", q["soru"])
+
+# ==========================================================
+
 
 # ===================== SLOT KONTROL =====================
 now_dt = datetime.now(TIMEZONE)
@@ -55,35 +71,35 @@ def save_json(path, data):
 
 # ===================== VERİLER =====================
 questions = load_json(QUESTIONS_FILE, [])
-asked_questions = load_json(ASKED_FILE, [])
 messages = load_json(MESSAGES_FILE, [])
 used_messages = load_json(USED_MESSAGES_FILE, [])
 progress = load_json(PROGRESS_FILE, {})
+wrong_questions = load_json(WRONG_FILE, [])
+questions = sorted(questions, key=lambda x: x["id"])
 # ==================================================
 
 # ===================== PERIOD KONTROL =====================
 
 if progress.get("period") != current_period:
 
-    remaining = [q for q in questions if q["id"] not in asked_questions]
+    global_index = progress.get("global_index", 0)
 
-    if len(remaining) < GUNLUK_SORU_SAYISI:
+    today_questions = questions[global_index:global_index + GUNLUK_SORU_SAYISI]
+
+    if len(today_questions) == 0:
         st.success("🎉 Tüm sorular tamamlandı!")
         st.stop()
-
-    today_questions = random.sample(remaining, GUNLUK_SORU_SAYISI)
 
     progress = {
         "period": current_period,
         "q_index": 0,
-        "today_questions": today_questions
+        "global_index": global_index
     }
 
     save_json(PROGRESS_FILE, progress)
 
 # Session state'i progress'ten doldur
 st.session_state.q_index = progress["q_index"]
-st.session_state.today_questions = progress["today_questions"]
 # ========================================================
 # ===================== MESAJ GÖSTER =====================
 if "show_message" in st.session_state and st.session_state.show_message:
@@ -95,7 +111,8 @@ if "show_message" in st.session_state and st.session_state.show_message:
 # ===================== ROMANTİK MESAJ GÖSTER =====================
 
 # ===============================================================
-today_questions = st.session_state.today_questions
+global_index = progress["global_index"]
+today_questions = questions[global_index:global_index + GUNLUK_SORU_SAYISI]
 q_index = st.session_state.q_index
 
 if q_index >= len(today_questions):
@@ -118,9 +135,6 @@ if st.button("Cevabı Onayla ✅"):
 
     if choice == q["dogru"]:
 
-        if q["id"] not in asked_questions:
-            asked_questions.append(q["id"])
-            save_json(ASKED_FILE, asked_questions)
 
         available_messages = [
             m for m in messages if m not in used_messages
@@ -137,12 +151,18 @@ if st.button("Cevabı Onayla ✅"):
             st.session_state.show_message = "💌 Tüm mesajlar kullanıldı 💖"
 
         st.session_state.q_index += 1
-
+        progress["global_index"] = progress["global_index"] + 1
+        
         progress["q_index"] = st.session_state.q_index
         save_json(PROGRESS_FILE, progress)
         
         st.rerun()
 
     else:
-        st.warning("❌ hadi bir daha deneyelim aşkım 💖💭")
+        
+            if q["id"] not in wrong_questions:
+                wrong_questions.append(q["id"])
+                save_json(WRONG_FILE, wrong_questions)
+        
+            st.warning("❌ hadi bir daha deneyelim aşkım 💖💭")
 # ==================================================  
