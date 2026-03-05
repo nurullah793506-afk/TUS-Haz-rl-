@@ -11,6 +11,9 @@ MORNING_TIME = time(8, 00)
 EVENING_TIME = time(18, 50)
 GUNLUK_SORU_SAYISI = 10
 
+st.set_page_config(page_title="Günün Seçilmiş Soruları", page_icon="🌸")
+st.title("🌸 Günaydın Güzelliğim 💖")
+
 QUESTIONS_FILE = "questions.json"
 MESSAGES_FILE = "messages.json"
 USED_MESSAGES_FILE = "used_messages.json"
@@ -18,8 +21,7 @@ PROGRESS_FILE = "progress.json"
 WRONG_FILE = "wrong_questions.json"
 # ==================================================
 
-st.set_page_config(page_title="Günün Seçilmiş Soruları", page_icon="🌸")
-st.title("🌸 Günaydın Güzelliğim 💖")
+
 # ===================== YANLIŞ SORULAR =====================
 st.write(f"📊 Toplam yanlış soru: {len(wrong_questions)}")
 if st.button("📚 Yanlış Sorularımı Gör"):
