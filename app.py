@@ -20,6 +20,7 @@ USED_MESSAGES_FILE = "used_messages.json"
 PROGRESS_FILE = "progress.json"
 WRONG_FILE = "wrong_questions.json"
 # ==================================================
+
 # ===================== JSON YARDIMCILAR =====================
 def load_json(path, default):
     if not os.path.exists(path):
@@ -33,12 +34,13 @@ def save_json(path, data):
     with open(path, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 # ==========================================================
+
 # ===================== VERİLER =====================
 questions = load_json(QUESTIONS_FILE, [])
 messages = load_json(MESSAGES_FILE, [])
 used_messages = load_json(USED_MESSAGES_FILE, [])
 progress = load_json(PROGRESS_FILE, {})
-wrong_questions = load_json(WRONG_FILE, [])
+wrong_questions = load_json(WRONG_FILE, [])  # <-- st.write'den önce yüklendi
 questions = sorted(questions, key=lambda x: x["id"])
 # ==================================================
 
@@ -170,4 +172,4 @@ if st.button("Cevabı Onayla ✅"):
                 save_json(WRONG_FILE, wrong_questions)
         
             st.warning("❌ hadi bir daha deneyelim aşkım 💖💭")
-# ==================================================  
+# ==================================================
