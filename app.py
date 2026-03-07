@@ -12,7 +12,7 @@ EVENING_TIME = time(17, 22)
 GUNLUK_SORU_SAYISI = 10
 
 st.set_page_config(page_title="Günün Seçilmiş Soruları", page_icon="🌸")
-st.title("🌸 Günaydın Güzelliğim 💖")
+st.title("🌸 Kork Bizden TUS...")
 
 QUESTIONS_FILE = "questions.json"
 MESSAGES_FILE = "messages.json"
