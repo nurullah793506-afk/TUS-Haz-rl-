@@ -7,7 +7,7 @@ import pytz
 
 # ===================== AYARLAR =====================
 TIMEZONE = pytz.timezone("Europe/Istanbul")
-MORNING_TIME = time(00, 04)
+MORNING_TIME = time(00, 4)
 EVENING_TIME = time(23, 59)
 GUNLUK_SORU_SAYISI = 10
 
