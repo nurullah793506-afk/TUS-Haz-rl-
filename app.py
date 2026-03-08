@@ -2,24 +2,21 @@ import streamlit as st
 import json
 import random
 import os
-from datetime import datetime, time
+from datetime import datetime
 import pytz
 
 # ===================== AYARLAR =====================
 TIMEZONE = pytz.timezone("Europe/Istanbul")
-MORNING_TIME = time(16, 4)
-EVENING_TIME = time(16, 5)
-GUNLUK_SORU_SAYISI = 10
+GUNLUK_SORU_SAYISI = 10  # Her slotta (sabah/akşam) kaç yeni soru eklenecek
 
 st.set_page_config(page_title="Günün Seçilmiş Soruları", page_icon="🌸")
-st.title("🌸 Kadınlar Günün kutlu olsun sevgilim. Senin hem güçlü hem de bu kadar iyi kalpli biri olman beni her zaman etkiliyor. İnsanlara dokunan bir iş yapıyorsun ama farkında olmadan benim hayatıma da çok güzel dokundun. İyi ki varsın, iyi ki hayatımdasın. 🌸...")
+st.title("🌸 Her 2 Dünyamı Güzelleştiren Kadına 🌸")
 
 QUESTIONS_FILE = "questions.json"
 MESSAGES_FILE = "messages.json"
 USED_MESSAGES_FILE = "used_messages.json"
 PROGRESS_FILE = "progress.json"
 WRONG_FILE = "wrong_questions.json"
-# ==================================================
 
 # ===================== JSON YARDIMCILAR =====================
 def load_json(path, default):
@@ -28,148 +25,112 @@ def load_json(path, default):
             json.dump(default, f, ensure_ascii=False, indent=2)
         return default
     with open(path, "r", encoding="utf-8") as f:
-        return json.load(f)
+        try:
+            return json.load(f)
+        except:
+            return default
 
 def save_json(path, data):
     with open(path, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
-# ==========================================================
 
-# ===================== VERİLER =====================
+# ===================== VERİ YÜKLEME =====================
 questions = load_json(QUESTIONS_FILE, [])
+# Soruları ID'ye göre sıralıyoruz ki hep aynı sırada gitsin
+questions = sorted(questions, key=lambda x: x.get("id", 0))
+
 messages = load_json(MESSAGES_FILE, [])
 used_messages = load_json(USED_MESSAGES_FILE, [])
-progress = load_json(PROGRESS_FILE, {})
-wrong_questions = load_json(WRONG_FILE, [])  # <-- st.write'den önce yüklendi
-questions = sorted(questions, key=lambda x: x["id"])
-# ==================================================
+progress = load_json(PROGRESS_FILE, {"global_index": 0, "last_period": ""})
+wrong_ids = load_json(WRONG_FILE, [])
 
-# ===================== YANLIŞ SORULAR =====================
-st.write(f"📊 Toplam yanlış soru: {len(wrong_questions)}")
-if st.button("📚 Yanlış Sorularımı Gör"):
+# ===================== ZAMAN KONTROLÜ =====================
+now_dt = datetime.now(TIMEZONE)
+current_hour = now_dt.hour
+today_str = now_dt.strftime("%Y-%m-%d")
 
-    if not wrong_questions:
-        st.info("Henüz yanlış yaptığın soru yok 🌸")
+# Slot belirleme (Sabah 08-20, Akşam 20-08)
+if 8 <= current_hour < 20:
+    current_slot = "sabah"
+else:
+    current_slot = "aksam"
 
-    else:
-        st.subheader("Yanlış Yaptığın Sorular")
+period_id = f"{today_str}_{current_slot}"
 
-        for q in questions:
-            if q["id"] in wrong_questions:
-                st.write("Soru:", q["soru"])
-                for idx, secenek in enumerate(q["secenekler"]):
-                    st.write(f"{chr(65+idx)}) {secenek}")
-                st.write("Doğru cevap:", q["dogru"])
-                st.markdown("---")
+# ===================== YANLIŞ SORULAR BÖLÜMÜ =====================
+with st.sidebar:
+    st.header("📊 İstatistikler")
+    st.write(f"✅ Çözülen Toplam: {progress['global_index']}")
+    st.write(f"❌ Yanlış Listesi: {len(wrong_ids)}")
+    
+    if st.checkbox("📚 Yanlış Sorularımı Göster"):
+        st.subheader("Hatalı Sorular Arşivi")
+        if not wrong_ids:
+            st.info("Harikasın, hiç yanlışın yok! 🌸")
+        else:
+            for q_id in wrong_ids:
+                # Soru listesinden ilgili soruyu bul
+                q_item = next((item for item in questions if item["id"] == q_id), None)
+                if q_item:
+                    with st.expander(f"Soru ID: {q_id}"):
+                        st.write(q_item["soru"])
+                        st.write(f"🎯 Doğru Cevap: **{q_item['dogru']}**")
+
+# ===================== SORU MANTIĞI =====================
+
+# Eğer yeni bir döneme girdiysek (örn: sabahtan akşama geçtik)
+# Burada bir kısıtlama istersen ekleyebilirsin, şu an kesintisiz devam ediyor.
+
+current_idx = progress.get("global_index", 0)
+
+if current_idx >= len(questions):
+    st.success("🎉 İnanılmaz! Tüm soruları tamamladın aşkım. Yeni soruları beklemede kal! 💖")
+    st.balloons()
+else:
+    q = questions[current_idx]
+    
+    st.info(f"📍 Şu an {current_idx + 1}. sorudasın")
+    st.subheader(f"📝 Soru")
+    st.write(q["soru"])
+    
+    # Seçenekleri göster
+    choice = st.radio("Cevabını seç:", q["secenekler"], key=f"q_{current_idx}")
+    
+    if st.button("Cevabı Onayla ✅"):
+        if choice == q["dogru"]:
+            # DOĞRU CEVAP
+            st.balloons()
+            
+            # Rastgele mesaj seçimi
+            available_msgs = [m for m in messages if m not in used_messages]
+            if not available_msgs: # Mesajlar bittiyse sıfırla
+                used_messages = []
+                available_msgs = messages
+            
+            new_msg = random.choice(available_msgs) if available_msgs else "Harikasın! 💖"
+            used_messages.append(new_msg)
+            
+            # İlerlemeyi kaydet
+            progress["global_index"] += 1
+            progress["last_period"] = period_id
+            
+            save_json(PROGRESS_FILE, progress)
+            save_json(USED_MESSAGES_FILE, used_messages)
+            
+            st.success(f"DOĞRU! 🌟 \n\n 💌 Mesajın: {new_msg}")
+            
+            # Bir sonraki soruya geçmek için sayfayı yenile
+            if st.button("Sonraki Soruya Geç ➡️"):
+                st.rerun()
+        else:
+            # YANLIŞ CEVAP
+            st.error("❌ Ah, bu sefer olmadı ama pes etmek yok! 💖")
+            
+            # Yanlışı kalıcı listeye ekle (eğer daha önce eklenmediyse)
+            if q["id"] not in wrong_ids:
+                wrong_ids.append(q["id"])
+                save_json(WRONG_FILE, wrong_ids)
+            
+            st.info("Bu soru 'Yanlış Sorularım' listesine eklendi, oradan tekrar bakabilirsin.")
 
 # ==========================================================
-
-
-# ===================== SLOT KONTROL =====================
-now_dt = datetime.now(TIMEZONE)
-now = now_dt.time()
-today = now_dt.strftime("%Y-%m-%d")
-
-slot = None
-
-if MORNING_TIME <= now < EVENING_TIME:
-    slot = "morning"
-elif now >= EVENING_TIME:
-    slot = "evening"
-else:
-    st.info("⏰ Sorular sabah 08:00 ve akşam 20:00'de açılır 💖")
-    st.stop()
-
-current_period = f"{today}_{slot}"
-# ========================================================
-
-
-
-# ===================== PERIOD KONTROL =====================
-
-if progress.get("period") != current_period:
-
-    global_index = progress.get("global_index", 0)
-
-    today_questions = questions[global_index:global_index + GUNLUK_SORU_SAYISI]
-
-    if len(today_questions) == 0:
-        st.success("🎉 Tüm sorular tamamlandı!")
-        st.stop()
-
-    progress = {
-        "period": current_period,
-        "q_index": 0,
-        "global_index": global_index
-    }
-
-    save_json(PROGRESS_FILE, progress)
-
-# Session state'i progress'ten doldur
-st.session_state.q_index = progress["q_index"]
-# ========================================================
-# ===================== MESAJ GÖSTER =====================
-if "show_message" in st.session_state and st.session_state.show_message:
-    st.success("💖 " + st.session_state.show_message)
-    st.balloons()
-    st.session_state.show_message = None
-# ========================================================
-
-# ===================== ROMANTİK MESAJ GÖSTER =====================
-
-# ===============================================================
-global_index = progress["global_index"]
-today_questions = questions[global_index:global_index + GUNLUK_SORU_SAYISI]
-q_index = st.session_state.q_index
-st.session_state.today_questions = questions[global_index:global_index + GUNLUK_SORU_SAYISI]
-if q_index >= len(today_questions):
-    st.success("🎉 Bugünün tüm sorularını tamamladın!")
-    st.stop()
-
-# ===================== SORU =====================
-q = today_questions[q_index]
-
-st.subheader(f"📝 Soru {q_index + 1}")
-st.write(q["soru"])
-
-choice = st.radio(
-    "Cevabını seç:",
-    q["secenekler"],
-    key=f"choice_{q_index}"
-)
-
-if st.button("Cevabı Onayla ✅"):
-
-    if choice == q["dogru"]:
-
-
-        available_messages = [
-            m for m in messages if m not in used_messages
-        ]
-
-        if available_messages:
-            msg = random.choice(available_messages)
-            used_messages.append(msg)
-            save_json(USED_MESSAGES_FILE, used_messages)
-
-            # 👉 BURASI ÖNEMLİ
-            st.session_state.show_message = msg
-        else:
-            st.session_state.show_message = "💌 Tüm mesajlar kullanıldı 💖"
-
-        st.session_state.q_index += 1
-        progress["global_index"] = progress["global_index"] + 1
-        
-        progress["q_index"] = st.session_state.q_index
-        save_json(PROGRESS_FILE, progress)
-        
-        st.rerun()
-
-    else:
-        
-            if q["id"] not in wrong_questions:
-                wrong_questions.append(q["id"])
-                save_json(WRONG_FILE, wrong_questions)
-        
-            st.warning("❌ hadi bir daha deneyelim aşkım 💖💭")
-# ==================================================
