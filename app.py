@@ -8,7 +8,7 @@ import pytz
 # ===================== AYARLAR =====================
 TIMEZONE = pytz.timezone("Europe/Istanbul")
 MORNING_TIME = time(16, 4)
-EVENING_TIME = time(16, 2)
+EVENING_TIME = time(16, 5)
 GUNLUK_SORU_SAYISI = 10
 
 st.set_page_config(page_title="Günün Seçilmiş Soruları", page_icon="🌸")
