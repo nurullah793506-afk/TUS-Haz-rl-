@@ -2,14 +2,12 @@ import streamlit as st
 import json
 import random
 import os
-from datetime import datetime, time
+from datetime import datetime
 import pytz
 
 # ===================== AYARLAR =====================
 TIMEZONE = pytz.timezone("Europe/Istanbul")
-MORNING_TIME = time(17, 59)
-EVENING_TIME = time(18, 1)
-GUNLUK_SORU_SAYISI = 10
+GUNLUK_SORU_SAYISI = 10  # Her slotta (sabah/akşam) kaç soru sorulacak
 
 st.set_page_config(page_title="Günün Seçilmiş Soruları", page_icon="🌸")
 st.title("🌸 Her 2 Dünyamı Güzelleştiren Kadına 🌸")
@@ -38,12 +36,12 @@ def save_json(path, data):
 
 # ===================== VERİ YÜKLEME =====================
 questions = load_json(QUESTIONS_FILE, [])
-# Soruları ID'ye göre sıralıyoruz ki hep aynı sırada gitsin
 questions = sorted(questions, key=lambda x: x.get("id", 0))
 
 messages = load_json(MESSAGES_FILE, [])
 used_messages = load_json(USED_MESSAGES_FILE, [])
-progress = load_json(PROGRESS_FILE, {"global_index": 0, "last_period": ""})
+# Progress yapısını güncelledik: period_counter o anki vakitte kaç soru çözüldüğünü tutar
+progress = load_json(PROGRESS_FILE, {"global_index": 0, "last_period": "", "period_counter": 0})
 wrong_ids = load_json(WRONG_FILE, [])
 
 # ===================== ZAMAN KONTROLÜ =====================
@@ -52,87 +50,94 @@ current_hour = now_dt.hour
 today_str = now_dt.strftime("%Y-%m-%d")
 
 # Slot belirleme (Sabah 08-20, Akşam 20-08)
-if 8 <= current_hour < 20:
+# Hassas saat ayarı örneği (08:30 ve 18:30 için)
+simdi_toplam_dakika = current_hour * 60 + now_dt.minute
+
+sabah_baslangic = 8 * 60 + 30  # 08:30
+aksam_baslangic = 18 * 60 + 30 # 18:30
+
+if sabah_baslangic <= simdi_toplam_dakika < aksam_baslangic:
     current_slot = "sabah"
 else:
     current_slot = "aksam"
 
 period_id = f"{today_str}_{current_slot}"
 
-# ===================== YANLIŞ SORULAR BÖLÜMÜ =====================
+# EĞER VAKİT DEĞİŞTİYSE SAYAÇLARI GÜNCELLE
+if progress["last_period"] != period_id:
+    progress["last_period"] = period_id
+    progress["period_counter"] = 0  # Yeni vakit başladı, 10 soru hakkı tanımlandı
+    save_json(PROGRESS_FILE, progress)
+
+# ===================== YANLIŞ SORULAR (SIDEBAR) =====================
+# Sidebar'ı en üstte tanımlıyoruz ki soru bitse bile hep orada kalsın
 with st.sidebar:
     st.header("📊 İstatistikler")
-    st.write(f"✅ Çözülen Toplam: {progress['global_index']}")
+    st.write(f"✅ Toplam Çözülen: {progress['global_index']}")
     st.write(f"❌ Yanlış Listesi: {len(wrong_ids)}")
     
-    if st.checkbox("📚 Yanlış Sorularımı Göster"):
-        st.subheader("Hatalı Sorular Arşivi")
+    st.divider()
+    show_wrongs = st.checkbox("📚 Yanlış Sorularımı Göster")
+    if show_wrongs:
         if not wrong_ids:
-            st.info("Harikasın, hiç yanlışın yok! 🌸")
+            st.info("Henüz yanlışın yok! 🌸")
         else:
             for q_id in wrong_ids:
-                # Soru listesinden ilgili soruyu bul
                 q_item = next((item for item in questions if item["id"] == q_id), None)
                 if q_item:
-                    with st.expander(f"Soru ID: {q_id}"):
-                        st.write(q_item["soru"])
-                        st.write(f"🎯 Doğru Cevap: **{q_item['dogru']}**")
+                    with st.expander(f"Soru: {q_item['soru'][:30]}..."):
+                        st.write(f"**Soru:** {q_item['soru']}")
+                        st.write(f"**Doğru Cevap:** {q_item['dogru']}")
 
 # ===================== SORU MANTIĞI =====================
 
-# Eğer yeni bir döneme girdiysek (örn: sabahtan akşama geçtik)
-# Burada bir kısıtlama istersen ekleyebilirsin, şu an kesintisiz devam ediyor.
-
-current_idx = progress.get("global_index", 0)
-
-if current_idx >= len(questions):
-    st.success("🎉 İnanılmaz! Tüm soruları tamamladın aşkım. Yeni soruları beklemede kal! 💖")
+# 1. Genel limit kontrolü (Tüm sorular bitti mi?)
+if progress["global_index"] >= len(questions):
+    st.success("🎉 İnanılmaz! Tüm testleri bitirdin. Sen bir harikasın! 💖")
     st.balloons()
+
+# 2. Vakitlik limit kontrolü (Bu sabah/akşam 10 soru çözüldü mü?)
+elif progress["period_counter"] >= GUNLUK_SORU_SAYISI:
+    st.warning(f"🌸 Bu vaktin ({current_slot}) için ayrılan {GUNLUK_SORU_SAYISI} soruyu tamamladın!")
+    st.info("Bir sonraki vakitte (sabah 08:00 veya akşam 20:00) yeni soruların hazır olacak. Dinlen biraz aşkım! ✨")
+
+# 3. Soru sorma aşaması
 else:
+    current_idx = progress["global_index"]
     q = questions[current_idx]
     
-    st.info(f"📍 Şu an {current_idx + 1}. sorudasın")
-    st.subheader(f"📝 Soru")
-    st.write(q["soru"])
+    st.write(f"**Soru {progress['period_counter'] + 1} / {GUNLUK_SORU_SAYISI}**")
+    st.subheader(q["soru"])
     
-    # Seçenekleri göster
     choice = st.radio("Cevabını seç:", q["secenekler"], key=f"q_{current_idx}")
     
     if st.button("Cevabı Onayla ✅"):
         if choice == q["dogru"]:
-            # DOĞRU CEVAP
             st.balloons()
             
-            # Rastgele mesaj seçimi
+            # Mesaj seçimi
             available_msgs = [m for m in messages if m not in used_messages]
-            if not available_msgs: # Mesajlar bittiyse sıfırla
+            if not available_msgs: 
                 used_messages = []
                 available_msgs = messages
-            
             new_msg = random.choice(available_msgs) if available_msgs else "Harikasın! 💖"
             used_messages.append(new_msg)
             
-            # İlerlemeyi kaydet
-            progress["global_index"] += 1
-            progress["last_period"] = period_id
+            # İLERLEME KAYDI
+            progress["global_index"] += 1    # Genel sırayı bir artır
+            progress["period_counter"] += 1 # Bu vakit çözülen sayısını bir artır
             
             save_json(PROGRESS_FILE, progress)
             save_json(USED_MESSAGES_FILE, used_messages)
             
-            st.success(f"DOĞRU! 🌟 \n\n 💌 Mesajın: {new_msg}")
+            st.success(f"DOĞRU! 🌟 \n\n 💌 {new_msg}")
             
-            # Bir sonraki soruya geçmek için sayfayı yenile
             if st.button("Sonraki Soruya Geç ➡️"):
                 st.rerun()
         else:
-            # YANLIŞ CEVAP
-            st.error("❌ Ah, bu sefer olmadı ama pes etmek yok! 💖")
+            st.error("❌ Yanlış cevap aşkım, bir daha düşünmek ister misin?")
             
-            # Yanlışı kalıcı listeye ekle (eğer daha önce eklenmediyse)
+            # Yanlışı kalıcı listeye ekle
             if q["id"] not in wrong_ids:
                 wrong_ids.append(q["id"])
                 save_json(WRONG_FILE, wrong_ids)
-            
-            st.info("Bu soru 'Yanlış Sorularım' listesine eklendi, oradan tekrar bakabilirsin.")
-
-# ==========================================================
