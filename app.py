@@ -25,7 +25,7 @@ GUNLUK_SORU_SAYISI = 10
 TEST_SAATLERI = ["11:43", "20:00"]
 
 st.set_page_config(page_title="Günün Seçilmiş Soruları", page_icon="🌸")
-st.title("🌸 Her İki Dünyamı Güzelleştiren Kadına 🌸")
+st.title("🌸 Sonsuza kadar hastanım ben… İyi ki varsın doktorum ❤️🌸")
 
 QUESTIONS_FILE = "questions.json"
 MESSAGES_FILE = "messages.json"
