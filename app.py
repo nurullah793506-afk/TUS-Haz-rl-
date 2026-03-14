@@ -118,7 +118,7 @@ today_str = now_dt.strftime("%Y-%m-%d")
 
 simdi_toplam_dakika = current_hour * 60 + now_dt.minute
 
-sabah_baslangic = 8 * 60 + 30   # 08:30
+sabah_baslangic = 11 * 60 + 30   # 08:30
 aksam_baslangic = 20 * 60 + 30  # 20:30
 
 if sabah_baslangic <= simdi_toplam_dakika < aksam_baslangic:
