@@ -27,6 +27,13 @@ MESSAGES_FILE = "messages.json"
 PROGRESS_FILE = "progress.json"
 WRONG_FILE = "wrong_questions.json"
 
+# ===================== SESSION STATE =====================
+if "answered_correctly" not in st.session_state:
+    st.session_state.answered_correctly = False
+
+if "success_message" not in st.session_state:
+    st.session_state.success_message = ""
+
 # ===================== JSON YARDIMCILAR =====================
 def load_json(path, default):
     if not os.path.exists(path):
@@ -153,38 +160,46 @@ else:
     
     st.write(f"**Soru {progress['period_counter'] + 1} / {GUNLUK_SORU_SAYISI}**")
     st.subheader(q["soru"])
-    
-    choice = st.radio("Cevabını seç:", q["secenekler"], key=f"q_{current_idx}")
-    
-    if st.button("Cevabı Onayla ✅"):
-        if choice == q["dogru"]:
-            st.balloons()
-            
-            # --- SIRALI MESAJ MANTIĞI ---
-            msg_idx = progress.get("message_index", 0)
-            
-            # Eğer mesajlar listesi bittiyse başa dön (veya istersen sabit bir mesaj ver)
-            if len(messages) > 0:
-                if msg_idx >= len(messages):
-                    msg_idx = 0
-                current_msg = messages[msg_idx]
-            else:
-                current_msg = ""
-            
-            # İLERLEME KAYDI
-            progress["global_index"] += 1    
-            progress["period_counter"] += 1 
-            progress["message_index"] = msg_idx + 1 # Mesaj sırasını bir sonraki için artır
-            
-            save_progress(progress)
-            
-            st.success(f"DOĞRU! 🌟 \n\n 💌 Mesajın: {current_msg}")
+
+    if st.session_state.answered_correctly:
+        st.balloons()
+        st.success(st.session_state.success_message)
+
+        if st.button("Sonraki Soruya Geç ➡️"):
+            st.session_state.answered_correctly = False
+            st.session_state.success_message = ""
             st.rerun()
 
-        else:
-            st.error("❌ Yanlış cevap, tekrar dene bakalım 💖")
-            
-            # Yanlışı Supabase'e kalıcı olarak ekle
-            if q["id"] not in wrong_ids:
-                wrong_ids.append(q["id"])
-                add_wrong_question(q["id"])
+    else:
+        choice = st.radio("Cevabını seç:", q["secenekler"], key=f"q_{current_idx}")
+        
+        if st.button("Cevabı Onayla ✅"):
+            if choice == q["dogru"]:
+                # --- SIRALI MESAJ MANTIĞI ---
+                msg_idx = progress.get("message_index", 0)
+                
+                if len(messages) > 0:
+                    if msg_idx >= len(messages):
+                        msg_idx = 0
+                    current_msg = messages[msg_idx]
+                else:
+                    current_msg = ""
+                
+                # İLERLEME KAYDI
+                progress["global_index"] += 1    
+                progress["period_counter"] += 1 
+                progress["message_index"] = msg_idx + 1
+                
+                save_progress(progress)
+
+                st.session_state.answered_correctly = True
+                st.session_state.success_message = f"DOĞRU! 🌟 \n\n 💌 Mesajın: {current_msg}"
+                st.rerun()
+
+            else:
+                st.error("❌ Yanlış cevap, tekrar dene bakalım 💖")
+                
+                # Yanlışı Supabase'e kalıcı olarak ekle
+                if q["id"] not in wrong_ids:
+                    wrong_ids.append(q["id"])
+                    add_wrong_question(q["id"])
