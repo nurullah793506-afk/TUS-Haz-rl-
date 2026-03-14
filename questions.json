@@ -1,64 +1,5 @@
 [
-  {
-    "id": 1,
-    "soru": "Ani başlayan şiddetli baş ağrısı ve ense sertliği olan hastada BT normal bulunuyor. Tanıyı doğrulamak için bir sonraki adım nedir?",
-    "secenekler": ["MR çekmek", "LP yapmak", "EEG çekmek", "BT anjiyografi"],
-    "dogru": "LP yapmak"
-  },
-  {
-    "id": 2,
-    "soru": "Hiperkalsemisi olan bir hastada PTH yüksek bulunuyor. En olası tanı nedir?",
-    "secenekler": ["Malignite", "Primer hiperparatiroidi", "D vitamini intoksikasyonu", "Sarkoidoz"],
-    "dogru": "Primer hiperparatiroidi"
-  },
-  {
-    "id": 3,
-    "soru": "Ewing sarkomunda radyolojik olarak görülen tipik periost reaksiyonu hangisidir?",
-    "secenekler": ["Güneş ışını", "Soğan zarı görünümü", "Sabun köpüğü", "Zımba deliği"],
-    "dogru": "Soğan zarı görünümü"
-  },
-  {
-    "id": 4,
-    "soru": "Akut romatizmal ateşte en sık görülen majör kriter hangisidir?",
-    "secenekler": ["Artralji", "Kardit", "Ateş", "ESR artışı"],
-    "dogru": "Kardit"
-  },
-  {
-    "id": 5,
-    "soru": "Akut pankreatitte en sık neden nedir?",
-    "secenekler": ["Alkol", "Safra taşı", "Hiperkalsemi", "Hipertrigliseridemi"],
-    "dogru": "Safra taşı"
-  },
-  {
-    "id": 6,
-    "soru": "En sık görülen primer beyin tümörü hangisidir?",
-    "secenekler": ["Glioblastoma multiforme", "Meningiom", "Astrositom", "Medulloblastom"],
-    "dogru": "Meningiom"
-  },
-  {
-    "id": 7,
-    "soru": "En sık görülen malign primer beyin tümörü hangisidir?",
-    "secenekler": ["Meningiom", "Glioblastoma multiforme", "Medulloblastom", "Oligodendrogliom"],
-    "dogru": "Glioblastoma multiforme"
-  },
-  {
-    "id": 8,
-    "soru": "İnfantlarda en sık görülen kalp hastalığı hangisidir?",
-    "secenekler": ["ASD", "VSD", "TOF", "PDA"],
-    "dogru": "VSD"
-  },
-  {
-    "id": 9,
-    "soru": "Yenidoğanda fizyolojik sarılık en erken ne zaman başlar?",
-    "secenekler": ["İlk 24 saat", "24 saatten sonra", "Doğumda", "1. haftada"],
-    "dogru": "24 saatten sonra"
-  },
-  {
-    "id": 10,
-    "soru": "Akut bakteriyel menenjitte BOS’ta en tipik bulgu hangisidir?",
-    "secenekler": ["Lenfosit artışı", "Protein düşüklüğü", "Glukoz düşüklüğü", "Basınç düşüklüğü"],
-    "dogru": "Glukoz düşüklüğü"
-  },
+
   {
     "id": 11,
     "soru": "Cushing sendromunun en sık nedeni hangisidir?",
@@ -298,5 +239,65 @@
     "soru": "En sık görülen non-Hodgkin lenfoma tipi hangisidir?",
     "secenekler": ["Diffuse large B cell", "Foliküler", "Mantle cell", "Burkitt"],
     "dogru": "Diffuse large B cell"
+  },
+  {
+    "id": 51,
+    "soru": "Ani başlayan şiddetli baş ağrısı ve ense sertliği olan hastada BT normal bulunuyor. Tanıyı doğrulamak için bir sonraki adım nedir?",
+    "secenekler": ["MR çekmek", "LP yapmak", "EEG çekmek", "BT anjiyografi"],
+    "dogru": "LP yapmak"
+  },
+  {
+    "id": 52,
+    "soru": "Hiperkalsemisi olan bir hastada PTH yüksek bulunuyor. En olası tanı nedir?",
+    "secenekler": ["Malignite", "Primer hiperparatiroidi", "D vitamini intoksikasyonu", "Sarkoidoz"],
+    "dogru": "Primer hiperparatiroidi"
+  },
+  {
+    "id": 53,
+    "soru": "Ewing sarkomunda radyolojik olarak görülen tipik periost reaksiyonu hangisidir?",
+    "secenekler": ["Güneş ışını", "Soğan zarı görünümü", "Sabun köpüğü", "Zımba deliği"],
+    "dogru": "Soğan zarı görünümü"
+  },
+  {
+    "id": 54,
+    "soru": "Akut romatizmal ateşte en sık görülen majör kriter hangisidir?",
+    "secenekler": ["Artralji", "Kardit", "Ateş", "ESR artışı"],
+    "dogru": "Kardit"
+  },
+  {
+    "id": 55,
+    "soru": "Akut pankreatitte en sık neden nedir?",
+    "secenekler": ["Alkol", "Safra taşı", "Hiperkalsemi", "Hipertrigliseridemi"],
+    "dogru": "Safra taşı"
+  },
+  {
+    "id": 56,
+    "soru": "En sık görülen primer beyin tümörü hangisidir?",
+    "secenekler": ["Glioblastoma multiforme", "Meningiom", "Astrositom", "Medulloblastom"],
+    "dogru": "Meningiom"
+  },
+  {
+    "id": 57,
+    "soru": "En sık görülen malign primer beyin tümörü hangisidir?",
+    "secenekler": ["Meningiom", "Glioblastoma multiforme", "Medulloblastom", "Oligodendrogliom"],
+    "dogru": "Glioblastoma multiforme"
+  },
+  {
+    "id": 58,
+    "soru": "İnfantlarda en sık görülen kalp hastalığı hangisidir?",
+    "secenekler": ["ASD", "VSD", "TOF", "PDA"],
+    "dogru": "VSD"
+  },
+  {
+    "id": 59,
+    "soru": "Yenidoğanda fizyolojik sarılık en erken ne zaman başlar?",
+    "secenekler": ["İlk 24 saat", "24 saatten sonra", "Doğumda", "1. haftada"],
+    "dogru": "24 saatten sonra"
+  },
+  {
+    "id": 60,
+    "soru": "Akut bakteriyel menenjitte BOS’ta en tipik bulgu hangisidir?",
+    "secenekler": ["Lenfosit artışı", "Protein düşüklüğü", "Glukoz düşüklüğü", "Basınç düşüklüğü"],
+    "dogru": "Glukoz düşüklüğü"
   }
 ]
