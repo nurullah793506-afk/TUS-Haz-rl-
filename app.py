@@ -2,7 +2,7 @@ import streamlit as st
 import json
 import random
 import os
-from datetime import datetime
+from datetime import datetime, timedelta
 import pytz
 from supabase import create_client
 
@@ -18,6 +18,9 @@ USER_ID = "main_user"
 # ===================== AYARLAR =====================
 TIMEZONE = pytz.timezone("Europe/Istanbul")
 GUNLUK_SORU_SAYISI = 10
+
+# BURAYA İSTEDİĞİN 2 SAATİ GİR
+TEST_SAATLERI = ["08:00", "10:00"]
 
 st.set_page_config(page_title="Günün Seçilmiş Soruları", page_icon="🌸")
 st.title("🌸 Her İki Dünyamı Güzelleştiren Kadına 🌸")
@@ -102,6 +105,35 @@ def add_wrong_question(question_id):
 def remove_wrong_question(question_id):
     supabase.table("wrong_questions").delete().eq("user_id", USER_ID).eq("question_id", question_id).execute()
 
+# ===================== ZAMAN YARDIMCILARI =====================
+def saat_to_dakika(saat_str):
+    saat, dakika = map(int, saat_str.split(":"))
+    return saat * 60 + dakika
+
+def get_period_id(now_dt, test_saatleri):
+    today_str = now_dt.strftime("%Y-%m-%d")
+    simdi_toplam_dakika = now_dt.hour * 60 + now_dt.minute
+
+    sorted_slots = sorted(test_saatleri, key=saat_to_dakika)
+    first_slot = sorted_slots[0]
+    second_slot = sorted_slots[1]
+
+    first_minutes = saat_to_dakika(first_slot)
+    second_minutes = saat_to_dakika(second_slot)
+
+    if simdi_toplam_dakika >= second_minutes:
+        active_slot = second_slot
+        active_date = today_str
+    elif simdi_toplam_dakika >= first_minutes:
+        active_slot = first_slot
+        active_date = today_str
+    else:
+        yesterday = now_dt - timedelta(days=1)
+        active_slot = second_slot
+        active_date = yesterday.strftime("%Y-%m-%d")
+
+    return f"{active_date}_{active_slot}"
+
 # ===================== VERİ YÜKLEME =====================
 questions = load_json(QUESTIONS_FILE, [])
 questions = sorted(questions, key=lambda x: x.get("id", 0))
@@ -113,20 +145,7 @@ wrong_ids = get_wrong_ids()
 
 # ===================== ZAMAN KONTROLÜ =====================
 now_dt = datetime.now(TIMEZONE)
-current_hour = now_dt.hour
-today_str = now_dt.strftime("%Y-%m-%d")
-
-simdi_toplam_dakika = current_hour * 60 + now_dt.minute
-
-sabah_baslangic = 11 * 60 + 30   # 08:30
-aksam_baslangic = 20 * 60 + 30  # 20:30
-
-if sabah_baslangic <= simdi_toplam_dakika < aksam_baslangic:
-    current_slot = "sabah"
-else:
-    current_slot = "aksam"
-
-period_id = f"{today_str}_{current_slot}"
+period_id = get_period_id(now_dt, TEST_SAATLERI)
 
 if progress["last_period"] != period_id:
     progress["last_period"] = period_id
@@ -144,6 +163,10 @@ with st.sidebar:
         "Mod Seç",
         ["Günün Soruları", "Yanlış Testi"]
     )
+
+    st.divider()
+    st.write(f"🕒 Test Saatleri: {TEST_SAATLERI[0]} / {TEST_SAATLERI[1]}")
+    st.write(f"📌 Aktif Slot: {period_id}")
 
     st.divider()
     if st.checkbox("📚 Yanlışlarımı Göster (Kalıcı Listem)"):
@@ -164,8 +187,8 @@ if mode == "Günün Soruları":
         st.balloons()
 
     elif progress["period_counter"] >= GUNLUK_SORU_SAYISI:
-        st.warning(f"🌸 Bu vaktin ({current_slot}) için ayrılan {GUNLUK_SORU_SAYISI} soruyu bitirdin.")
-        st.info("Bir sonraki vakit diliminde yeni soruların açılacak. Beklemede kal aşkım! ✨")
+        st.warning(f"🌸 Bu zaman dilimi için ayrılan {GUNLUK_SORU_SAYISI} soruyu bitirdin.")
+        st.info("Bir sonraki zaman diliminde yeni soruların açılacak. Beklemede kal aşkım! ✨")
 
     else:
         current_idx = progress["global_index"]
